@@ -1,7 +1,10 @@
-export const Footer = () => {
-  return (
-    <div style={{ backgroundColor: "gray", height: "500px" }}>
-      Footer section
-    </div>
-  );
-};
+import styled from "styled-components";
+
+const StyledFooter = styled.div`
+  background-color: gray;
+  height: 500px;
+`;
+
+export function Footer() {
+  return <StyledFooter>Footer section</StyledFooter>;
+}
