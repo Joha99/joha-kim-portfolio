@@ -1,5 +1,7 @@
-import { Header } from "@/components/layout/Header";
+import { Header } from "@/components/header/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Body } from "./components/sections/Body";
+import { Footer } from "./components/footer/Footer";
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <main>
         <Hero />
       </main>
+      <Body />
+      <Footer />
     </>
   );
 }
