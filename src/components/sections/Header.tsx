@@ -1,20 +1,15 @@
 import styled from "styled-components";
+import { PageGridSection } from "@/components/layout/PageGridLayout";
 
-const StyledHeader = styled.header(() => ({
-  position: "absolute",
-  top: 0,
-  left: 0,
-  right: 0,
+const StyledHeader = styled(PageGridSection).attrs({ as: "header" })(() => ({
+  height: "4rem",
 }));
 
 const Nav = styled.nav(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-  maxWidth: "64rem",
-  height: "4rem",
-  margin: "0 auto",
-  padding: "0 1.5rem",
+  gridColumn: "2 / -2",
 }));
 
 const Logo = styled.a(() => ({

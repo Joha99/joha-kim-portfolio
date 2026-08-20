@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
-const Section = styled(PageGridSection)(() => ({
-  height: "calc(100vh - 4rem)",
+const StyledFooter = styled(PageGridSection).attrs({ as: "footer" })(() => ({
   backgroundColor: "gray",
+  height: "500px",
 }));
 
 const Content = styled.div(() => ({
   gridColumn: "2 / -2",
 }));
 
-export function Hero() {
+export function Footer() {
   return (
-    <Section>
-      <Content>Hero section</Content>
-    </Section>
+    <StyledFooter>
+      <Content>Footer section</Content>
+    </StyledFooter>
   );
 }

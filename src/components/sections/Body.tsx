@@ -1,10 +1,19 @@
 import styled from "styled-components";
+import { PageGridSection } from "@/components/layout/PageGridLayout";
 
-const Section = styled.div(() => ({
-  backgroundColor: "pink",
-  blockSize: "1000px",
+const Section = styled(PageGridSection)(() => ({
+  backgroundColor: "white",
+  minHeight: "1000px",
+}));
+
+const Content = styled.div(() => ({
+  gridColumn: "2 / -2",
 }));
 
 export function Body() {
-  return <Section>Body section</Section>;
+  return (
+    <Section>
+      <Content>Body section</Content>
+    </Section>
+  );
 }

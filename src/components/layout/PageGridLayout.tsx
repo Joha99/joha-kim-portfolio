@@ -7,11 +7,9 @@ interface PageGridLayoutProps {
 
 const Grid = styled.div(() => ({
   display: "grid",
-  gridTemplateColumns: "repeat(12, 1fr)",
+  gridTemplateColumns:
+    "1fr repeat(12, minmax(0, calc((1200px - 11 * 1.5rem) / 12))) 1fr",
   columnGap: "1.5rem",
-  maxWidth: "1200px",
-  margin: "0 auto",
-  padding: "0 1.5rem",
 }));
 
 export const PageGridSection = styled.section(() => ({
