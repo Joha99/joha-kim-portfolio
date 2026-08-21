@@ -1,8 +1,8 @@
-import { Header } from "@/components/sections/Header";
 import { PageGridLayout } from "@/components/layout/PageGridLayout";
-import { Hero } from "@/components/sections/Hero";
 import { Body } from "@/components/sections/Body";
 import { Footer } from "@/components/sections/Footer";
+import { Header } from "@/components/sections/Header";
+import { Hero } from "@/components/sections/Hero";
 
 function App() {
   return (

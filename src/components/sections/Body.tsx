@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const Section = styled(PageGridSection)(() => ({

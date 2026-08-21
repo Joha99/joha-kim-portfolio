@@ -1,57 +1,63 @@
+import { ArrowTopRightIcon, SunIcon } from "@radix-ui/react-icons";
+import { Toggle } from "radix-ui";
 import styled from "styled-components";
+
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const StyledHeader = styled(PageGridSection).attrs({ as: "header" })(() => ({
+  backgroundColor: "white",
   height: "4rem",
 }));
 
 const Nav = styled.nav(() => ({
-  display: "flex",
   alignItems: "center",
-  justifyContent: "space-between",
-  gridColumn: "2 / -2",
-}));
-
-const Logo = styled.a(() => ({
-  fontSize: "1.125rem",
-  fontWeight: 600,
-  letterSpacing: "-0.02em",
-}));
-
-const Links = styled.ul(() => ({
   display: "flex",
-  gap: "0.25rem",
+  gridColumn: "2 / -2",
+  justifyContent: "space-between",
+}));
+
+const Links = styled.ul(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing[12],
   listStyle: "none",
 }));
 
 const Link = styled.a(({ theme }) => ({
-  padding: "0.5rem 0.75rem",
-  fontSize: "0.875rem",
-  borderRadius: "0.375rem",
-  transition: "background 0.15s",
-  "&:hover": {
-    background: theme.colors.surface,
-  },
+  alignItems: "center",
+  display: "flex",
+  fontSize: theme.fontSizes["xs"],
+  gap: theme.spacing["2"],
+}));
+
+const ThemeToggleButton = styled(Toggle.Root)(() => ({
+  backgroundColor: "transparent",
+  border: "none",
+  height: "30px",
+  width: "30px",
 }));
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "ABOUT", href: "#about" },
+  { label: "PROJECTS", href: "#projects" },
+  { label: "ARTWORK", href: "#artwork" },
+  { label: "CONTACT", href: "#contact" },
 ];
 
 export function Header() {
   return (
     <StyledHeader>
       <Nav>
-        <Logo href="/">Joha Kim</Logo>
         <Links>
           {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link href={link.href}>{link.label}</Link>
-            </li>
+            <Link key={link.href} href={link.href}>
+              <li>{link.label}</li>
+              <ArrowTopRightIcon />
+            </Link>
           ))}
         </Links>
+        <ThemeToggleButton aria-label="Theme" className="theme-toggle">
+          <SunIcon />
+        </ThemeToggleButton>
       </Nav>
     </StyledHeader>
   );
