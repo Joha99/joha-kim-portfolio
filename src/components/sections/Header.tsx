@@ -18,7 +18,7 @@ const Nav = styled.nav(() => ({
 
 const Links = styled.ul(({ theme }) => ({
   display: "flex",
-  gap: theme.spacing[12],
+  gap: theme.spacing["12"],
   listStyle: "none",
 }));
 

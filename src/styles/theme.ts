@@ -22,7 +22,7 @@ export const theme = {
     "3xl": "30px",
     "4xl": "36px",
     "5xl": "48px",
-    "6xl": "60px",
+    "6xl": "100px",
   },
   spacing: {
     "2": "2px",
