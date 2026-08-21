@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const StyledFooter = styled(PageGridSection).attrs({ as: "footer" })(() => ({
-  backgroundColor: "gray",
+  backgroundColor: "white",
   height: "500px",
 }));
 
