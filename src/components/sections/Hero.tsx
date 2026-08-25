@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const Section = styled(PageGridSection)(() => ({
-  paddingBlock: 0,
   height: "calc(100vh - 4rem)",
+  paddingBlock: 0,
 }));
 
 const Content = styled.div(() => ({
@@ -17,16 +17,16 @@ const Content = styled.div(() => ({
 
 const Title = styled.h3(({ theme }) => ({
   alignSelf: "start",
-  fontSize: theme.fontSizes["xl"],
-  fontWeight: "normal",
+  fontSize: theme.fontSizes.xl,
+  fontWeight: theme.fontWeights.normal,
   gridColumn: "1 / 2",
   gridRow: "1 / 2",
 }));
 
 const Location = styled.h3(({ theme }) => ({
   alignSelf: "start",
-  fontSize: theme.fontSizes["xl"],
-  fontWeight: "normal",
+  fontSize: theme.fontSizes.xl,
+  fontWeight: theme.fontWeights.normal,
   gridColumn: "4 / 5",
   gridRow: "1 / 2",
   textAlign: "right",
@@ -44,7 +44,7 @@ const Name = styled.h1(({ theme }) => ({
 const HeroText = styled.h2(({ theme }) => ({
   alignSelf: "start",
   fontSize: theme.fontSizes["3xl"],
-  fontWeight: "normal",
+  fontWeight: theme.fontWeights.normal,
   gridColumn: "1 / 3",
   gridRow: "4 / 5",
   textTransform: "uppercase",

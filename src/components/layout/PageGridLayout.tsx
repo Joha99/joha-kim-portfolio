@@ -5,8 +5,8 @@ interface PageGridLayoutProps {
   children: ReactNode;
 }
 
-const Grid = styled.div(() => ({
-  backgroundColor: "#FFF8F0",
+const Grid = styled.div(({ theme }) => ({
+  backgroundColor: theme.colors.background.warm,
   columnGap: "1.5rem",
   display: "grid",
   gridTemplateColumns:
@@ -17,7 +17,7 @@ export const PageGridSection = styled.section(({ theme }) => ({
   display: "grid",
   gridColumn: "1 / -1",
   gridTemplateColumns: "subgrid",
-  paddingBlock: theme.spacing["64"],
+  paddingBlock: theme.spacing["80"],
 }));
 
 export function PageGridLayout({ children }: PageGridLayoutProps) {

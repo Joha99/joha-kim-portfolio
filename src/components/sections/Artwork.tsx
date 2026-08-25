@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { SectionHeader } from "@/components/SectionHeader";
 
 const Section = styled(PageGridSection)(() => ({}));
 
@@ -12,7 +13,7 @@ export function Artwork() {
   return (
     <Section id="artwork">
       <Content>
-        <h2>Craft & Motion</h2>
+        <SectionHeader>Craft & Motion</SectionHeader>
       </Content>
     </Section>
   );

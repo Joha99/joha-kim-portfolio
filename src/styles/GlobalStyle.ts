@@ -16,8 +16,8 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.colors.bg};
-    color: ${({ theme }) => theme.colors.fg};
+    background: ${({ theme }) => theme.colors.background.primary};
+    color: ${({ theme }) => theme.colors.font.primary};
     line-height: 1.6;
     overflow-x: hidden;
   }

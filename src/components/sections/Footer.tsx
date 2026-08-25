@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const StyledFooter = styled(PageGridSection)(({ theme }) => ({
-  backgroundColor: theme.colors.bgNight,
-  color: theme.colors.bg,
+  backgroundColor: theme.colors.background.night,
+  color: theme.colors.font.inverse,
 }));
 
 const Content = styled.div(() => ({
@@ -17,7 +17,7 @@ const Content = styled.div(() => ({
 
 const CTA = styled.h2(({ theme }) => ({
   fontSize: theme.fontSizes["6xl"],
-  fontWeight: "normal",
+  fontWeight: theme.fontWeights.normal,
   gridColumn: "1 / 4",
   lineHeight: 1,
 }));
@@ -36,7 +36,8 @@ const ListItem = styled.li(() => ({
   textAlign: "right",
 }));
 
-const TechStack = styled.p(() => ({
+const TechStack = styled.p(({ theme }) => ({
+  color: theme.colors.font.muted,
   gridColumn: "1 / 5",
   justifySelf: "center",
 }));
