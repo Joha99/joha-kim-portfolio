@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
-
-const Section = styled(PageGridSection)(() => ({}));
-
-const Header = styled.div(() => ({
-  gridColumn: "2 / -2",
-}));
 
 const TrackWrapper = styled.div(() => ({
   gridColumn: "1 / -1",
@@ -28,10 +22,10 @@ const Track = styled.div(({ theme }) => ({
   },
 }));
 
-const Card = styled.div<{ $rotateY: number; $scale: number; $opacity: number }>(
-  ({ theme, $rotateY, $scale, $opacity }) => ({
+const Card = styled.div<{ $opacity: number; $rotateY: number; $scale: number }>(
+  ({ theme, $opacity, $rotateY, $scale }) => ({
     backgroundColor: theme.colors.background.primary,
-    borderRadius: "12px",
+    borderRadius: theme.radii.lg,
     flex: "0 0 280px",
     height: "360px",
     opacity: $opacity,
@@ -54,7 +48,7 @@ const artworks = [
 function getCardTransform(
   cardEl: HTMLElement,
   trackEl: HTMLElement,
-): { rotateY: number; scale: number; opacity: number } {
+): { opacity: number; rotateY: number; scale: number } {
   const trackRect = trackEl.getBoundingClientRect();
   const cardRect = cardEl.getBoundingClientRect();
   const trackCenter = trackRect.left + trackRect.width / 2;
@@ -74,7 +68,7 @@ export function Artwork() {
   const trackRef = useRef<HTMLDivElement>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const [transforms, setTransforms] = useState(
-    artworks.map(() => ({ rotateY: 0, scale: 1, opacity: 1 })),
+    artworks.map(() => ({ opacity: 1, rotateY: 0, scale: 1 })),
   );
 
   useEffect(() => {
@@ -83,7 +77,7 @@ export function Artwork() {
 
     const update = () => {
       const next = cardRefs.current.map((card) => {
-        if (!card || !track) return { rotateY: 0, scale: 1, opacity: 1 };
+        if (!card || !track) return { opacity: 1, rotateY: 0, scale: 1 };
         return getCardTransform(card, track);
       });
       setTransforms(next);
@@ -100,10 +94,10 @@ export function Artwork() {
   }, []);
 
   return (
-    <Section id="artwork">
-      <Header>
+    <PageGridSection id="artwork">
+      <SectionContent>
         <SectionHeader>Craft & Motion</SectionHeader>
-      </Header>
+      </SectionContent>
       <TrackWrapper>
         <Track ref={trackRef}>
           {artworks.map((item, i) => (
@@ -112,15 +106,15 @@ export function Artwork() {
               ref={(el) => {
                 cardRefs.current[i] = el;
               }}
+              $opacity={transforms[i].opacity}
               $rotateY={transforms[i].rotateY}
               $scale={transforms[i].scale}
-              $opacity={transforms[i].opacity}
             >
               {item.label}
             </Card>
           ))}
         </Track>
       </TrackWrapper>
-    </Section>
+    </PageGridSection>
   );
 }

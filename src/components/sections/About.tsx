@@ -1,15 +1,12 @@
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const Section = styled(PageGridSection)(() => ({}));
-
-const Content = styled.div(() => ({
-  gridColumn: "2 / -2",
+const Content = styled(SectionContent)(() => ({
+  alignContent: "center",
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
-  alignContent: "center",
 }));
 
 const Introduction = styled.p(({ theme }) => ({
@@ -19,7 +16,7 @@ const Introduction = styled.p(({ theme }) => ({
 
 export function About() {
   return (
-    <Section id="about">
+    <PageGridSection id="about">
       <Content>
         <SectionHeader>About</SectionHeader>
         <Introduction>
@@ -31,6 +28,6 @@ export function About() {
           details down to the pixel.
         </Introduction>
       </Content>
-    </Section>
+    </PageGridSection>
   );
 }

@@ -1,14 +1,8 @@
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
-
-const Section = styled(PageGridSection)(() => ({}));
-
-const Content = styled.div(() => ({
-  gridColumn: "2 / -2",
-}));
 
 const CardGrid = styled.div(({ theme }) => ({
   display: "grid",
@@ -19,7 +13,7 @@ const CardGrid = styled.div(({ theme }) => ({
 
 const Card = styled.div(({ theme }) => ({
   backgroundColor: theme.colors.background.primary,
-  borderRadius: "16px",
+  borderRadius: theme.radii.xl,
   display: "flex",
   flexDirection: "column",
   overflow: "hidden",
@@ -28,7 +22,7 @@ const Card = styled.div(({ theme }) => ({
 
 const ImageSlot = styled.div(({ theme }) => ({
   backgroundColor: theme.colors.background.sand,
-  borderRadius: "12px",
+  borderRadius: theme.radii.lg,
   height: "240px",
   marginBottom: theme.spacing["24"],
 }));
@@ -71,8 +65,8 @@ const projects = [
 
 export function Projects() {
   return (
-    <Section id="projects">
-      <Content>
+    <PageGridSection id="projects">
+      <SectionContent>
         <SectionHeader>Featured Projects</SectionHeader>
         <CardGrid>
           {projects.map((project) => (
@@ -86,7 +80,7 @@ export function Projects() {
             </Card>
           ))}
         </CardGrid>
-      </Content>
-    </Section>
+      </SectionContent>
+    </PageGridSection>
   );
 }

@@ -11,6 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-family: ${({ theme }) => theme.fonts.sans};
+    scroll-snap-type: y mandatory;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

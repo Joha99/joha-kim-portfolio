@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 
 const StyledFooter = styled(PageGridSection)(({ theme }) => ({
   backgroundColor: theme.colors.background.night,
   color: theme.colors.font.inverse,
+  minHeight: "auto",
 }));
 
-const Content = styled.div(() => ({
+const Content = styled(SectionContent)(() => ({
   display: "grid",
-  gridColumn: "2 / -2",
   gridTemplateColumns: "repeat(4, 1fr)",
   gridTemplateRows: "1fr auto",
   height: "500px",

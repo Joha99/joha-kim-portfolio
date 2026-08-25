@@ -1,13 +1,7 @@
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
-
-const Section = styled(PageGridSection)(() => ({}));
-
-const Content = styled.div(() => ({
-  gridColumn: "2 / -2",
-}));
 
 const Row = styled.div(({ theme }) => ({
   alignItems: "center",
@@ -59,8 +53,8 @@ const skills = [
 
 export function Skills() {
   return (
-    <Section id="skills">
-      <Content>
+    <PageGridSection id="skills">
+      <SectionContent>
         <SectionHeader>Skills</SectionHeader>
         {skills.map((skill) => (
           <Row key={skill.category}>
@@ -68,7 +62,7 @@ export function Skills() {
             <Tags>{skill.tags.join(" · ")}</Tags>
           </Row>
         ))}
-      </Content>
-    </Section>
+      </SectionContent>
+    </PageGridSection>
   );
 }

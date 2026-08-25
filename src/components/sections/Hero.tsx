@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
-const Section = styled(PageGridSection)(() => ({
-  height: "calc(100vh - 4rem)",
-  paddingBlock: 0,
+const Section = styled(PageGridSection)(({ theme }) => ({
+  height: "calc(100vh - (2 * 8px))",
+  padding: theme.spacing["12"],
 }));
 
 const Content = styled.div(() => ({
@@ -17,16 +17,23 @@ const Content = styled.div(() => ({
 
 const Title = styled.h3(({ theme }) => ({
   alignSelf: "start",
+  color: theme.colors.font.muted,
+  fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.normal,
+  fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / 2",
   gridRow: "1 / 2",
 }));
 
 const Location = styled.h3(({ theme }) => ({
+  alignItems: "end",
   alignSelf: "start",
+  color: theme.colors.font.muted,
+  display: "flex",
+  flexDirection: "column",
+  fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.normal,
+  fontWeight: theme.fontWeights.semibold,
   gridColumn: "4 / 5",
   gridRow: "1 / 2",
   textAlign: "right",
@@ -34,20 +41,20 @@ const Location = styled.h3(({ theme }) => ({
 
 const Name = styled.h1(({ theme }) => ({
   fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes["6xl"],
+  fontSize: "150px",
   gridColumn: "1 / -1",
   gridRow: "2 / 4",
   placeSelf: "center",
-  transform: "translateY(-4rem)",
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
-  alignSelf: "start",
+  alignSelf: "end",
+  color: theme.colors.font.muted,
+  fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes["3xl"],
-  fontWeight: theme.fontWeights.normal,
-  gridColumn: "1 / 3",
+  fontWeight: theme.fontWeights.hero,
+  gridColumn: "1 / 4",
   gridRow: "4 / 5",
-  textTransform: "uppercase",
 }));
 
 export function Hero() {
@@ -59,10 +66,17 @@ export function Hero() {
           <br />
           <span>ENGINEER</span>
         </Title>
-        <Location>WASHINGTON, D.C.</Location>
-        <Name>JOHA KIM</Name>
+        <Location>
+          <span>WASHINGTON, DC</span>
+          <span>USA</span>
+        </Location>
+        <Name>joha kim</Name>
         <HeroText>
-          Pixel-perfect UI, delightful interactions, and a touch of whimsy.
+          <span>Crafting and engineering</span>
+          <br />
+          <span>pixel-perfect UI and delightful interactions</span>
+          <br />
+          <span>with a touch of whimsy.</span>
         </HeroText>
       </Content>
     </Section>
