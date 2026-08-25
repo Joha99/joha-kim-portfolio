@@ -1,15 +1,21 @@
 import { PageGridLayout } from "@/components/layout/PageGridLayout";
-import { Body } from "@/components/sections/Body";
+import { About } from "@/components/sections/About";
+import { Artwork } from "@/components/sections/Artwork";
 import { Footer } from "@/components/sections/Footer";
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
+import { Projects } from "@/components/sections/Projects";
+import { Skills } from "@/components/sections/Skills";
 
 function App() {
   return (
     <PageGridLayout>
       <Header />
       <Hero />
-      <Body />
+      <About />
+      <Skills />
+      <Projects />
+      <Artwork />
       <Footer />
     </PageGridLayout>
   );

@@ -5,8 +5,8 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const StyledHeader = styled(PageGridSection).attrs({ as: "header" })(() => ({
-  backgroundColor: "white",
   height: "4rem",
+  paddingBlock: 0,
 }));
 
 const Nav = styled.nav(() => ({
@@ -25,7 +25,7 @@ const Links = styled.ul(({ theme }) => ({
 const Link = styled.a(({ theme }) => ({
   alignItems: "center",
   display: "flex",
-  fontSize: theme.fontSizes["xs"],
+  fontSize: theme.fontSizes.xs,
   gap: theme.spacing["2"],
 }));
 
@@ -55,7 +55,7 @@ export function Header() {
             </Link>
           ))}
         </Links>
-        <ThemeToggleButton aria-label="Theme" className="theme-toggle">
+        <ThemeToggleButton aria-label="Theme">
           <SunIcon />
         </ThemeToggleButton>
       </Nav>

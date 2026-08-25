@@ -1,16 +1,38 @@
 export const theme = {
   colors: {
-    bg: "#ffffff",
-    fg: "#111111",
-    fgMuted: "#6b7280",
-    border: "#e5e7eb",
-    accent: "#111111",
-    accentFg: "#ffffff",
-    surface: "#f9fafb",
+    background: {
+      primary: "#FFFDF9",
+      warm: "#FFF8F0",
+      sand: "#F5F0E8",
+      night: "#1A1A18",
+    },
+    font: {
+      primary: "#111111",
+      secondary: "#4A4A45",
+      muted: "#8A8A82",
+      inverse: "#FAFAF7",
+    },
+    accent: {
+      ember: "#E8572A",
+      volt: "#C7EF00",
+      cobalt: "#3A5BD9",
+      stone: "#D4C5B0",
+    },
+    border: {
+      default: "#E5E0D8",
+      strong: "#C8C2B8",
+      inverse: "#2C2C28",
+    },
   },
   fonts: {
-    sans: "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
-    mono: "ui-monospace, 'SF Mono', Consolas, monospace",
+    sans: "'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    mono: "'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace",
+  },
+  fontWeights: {
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
   },
   fontSizes: {
     xs: "12px",
@@ -22,7 +44,8 @@ export const theme = {
     "3xl": "30px",
     "4xl": "36px",
     "5xl": "48px",
-    "6xl": "100px",
+    "6xl": "70px",
+    "7xl": "100px",
   },
   spacing: {
     "2": "2px",
