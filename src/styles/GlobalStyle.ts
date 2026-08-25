@@ -11,13 +11,14 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     font-family: ${({ theme }) => theme.fonts.sans};
+    scroll-snap-type: y mandatory;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    background: ${({ theme }) => theme.colors.background.primary};
-    color: ${({ theme }) => theme.colors.font.primary};
+    background: ${({ theme }) => theme.colors.background.night};
+    color: ${({ theme }) => theme.colors.font.inverse};
     line-height: 1.6;
     overflow-x: hidden;
   }

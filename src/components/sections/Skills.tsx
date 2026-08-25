@@ -1,31 +1,34 @@
 import styled from "styled-components";
 
-import { PageGridSection } from "@/components/layout/PageGridLayout";
+import {
+  PageGridSection,
+  SectionContent,
+} from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const Section = styled(PageGridSection)(() => ({}));
-
-const Content = styled.div(() => ({
-  gridColumn: "2 / -2",
+const Section = styled(PageGridSection)(({ theme }) => ({
+  placeContent: "center",
 }));
 
 const Row = styled.div(({ theme }) => ({
   alignItems: "center",
-  borderBottom: `1px solid ${theme.colors.border.default}`,
+  borderBottom: `1px solid ${theme.colors.border.subtle}`,
   display: "flex",
   justifyContent: "space-between",
-  padding: `${theme.spacing["24"]} 0`,
+  paddingTop: theme.spacing["8"],
+  paddingBottom: theme.spacing["40"],
 }));
 
 const Category = styled.h3(({ theme }) => ({
   fontSize: theme.fontSizes.lg,
-  fontWeight: theme.fontWeights.normal,
+  fontWeight: theme.fontWeights.semibold,
 }));
 
 const Tags = styled.span(({ theme }) => ({
-  color: theme.colors.font.muted,
+  color: theme.colors.font.inverseMuted,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.sm,
+  fontWeight: theme.fontWeights.medium,
   textTransform: "uppercase",
 }));
 
@@ -36,14 +39,14 @@ const skills = [
   },
   {
     category: "Styling",
-    tags: ["Styled Components", "StyleX", "Tailwind", "Sass", "CSS Modules"],
+    tags: ["Styled Components", "StyleX", "Tailwind", "Sass", "CSS"],
   },
   {
-    category: "Design Systems",
+    category: "Design systems",
     tags: ["Design Tokens", "Component APIs", "Accessibility", "SVG", "Figma"],
   },
   {
-    category: "State Management",
+    category: "State management",
     tags: ["Zustand", "Redux"],
   },
   {
@@ -59,7 +62,7 @@ const skills = [
 export function Skills() {
   return (
     <Section id="skills">
-      <Content>
+      <SectionContent>
         <SectionHeader>Skills</SectionHeader>
         {skills.map((skill) => (
           <Row key={skill.category}>
@@ -67,7 +70,7 @@ export function Skills() {
             <Tags>{skill.tags.join(" · ")}</Tags>
           </Row>
         ))}
-      </Content>
+      </SectionContent>
     </Section>
   );
 }

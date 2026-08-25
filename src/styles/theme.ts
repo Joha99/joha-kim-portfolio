@@ -11,6 +11,7 @@ export const theme = {
       secondary: "#4A4A45",
       muted: "#8A8A82",
       inverse: "#FAFAF7",
+      inverseMuted: "#A8A8A0",
     },
     accent: {
       ember: "#E8572A",
@@ -21,18 +22,21 @@ export const theme = {
     border: {
       default: "#E5E0D8",
       strong: "#C8C2B8",
+      subtle: "#333330",
       inverse: "#2C2C28",
     },
   },
   fonts: {
-    sans: "'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    display: "'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
     mono: "'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace",
+    sans: "'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
   },
   fontWeights: {
     normal: 400,
     medium: 500,
     semibold: 600,
     bold: 700,
+    hero: 800,
   },
   fontSizes: {
     xs: "12px",
@@ -46,6 +50,14 @@ export const theme = {
     "5xl": "48px",
     "6xl": "70px",
     "7xl": "100px",
+  },
+  radii: {
+    sm: "4px",
+    md: "8px",
+    lg: "12px",
+    xl: "16px",
+    "2xl": "24px",
+    full: "9999px",
   },
   spacing: {
     "2": "2px",
