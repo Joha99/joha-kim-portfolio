@@ -1,14 +1,22 @@
 import styled from "styled-components";
 
-import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
+import {
+  PageGridSection,
+  SectionContent,
+} from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
+
+const Section = styled(PageGridSection)(({ theme }) => ({
+  placeContent: "center",
+}));
 
 const Row = styled.div(({ theme }) => ({
   alignItems: "center",
-  borderBottom: `1px solid ${theme.colors.border.default}`,
+  borderBottom: `1px solid ${theme.colors.border.subtle}`,
   display: "flex",
   justifyContent: "space-between",
-  padding: `${theme.spacing["24"]} 0`,
+  paddingTop: theme.spacing["8"],
+  paddingBottom: theme.spacing["40"],
 }));
 
 const Category = styled.h3(({ theme }) => ({
@@ -17,7 +25,7 @@ const Category = styled.h3(({ theme }) => ({
 }));
 
 const Tags = styled.span(({ theme }) => ({
-  color: theme.colors.font.muted,
+  color: theme.colors.font.inverseMuted,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.sm,
   fontWeight: theme.fontWeights.medium,
@@ -31,7 +39,7 @@ const skills = [
   },
   {
     category: "Styling",
-    tags: ["Styled Components", "StyleX", "Tailwind", "Sass", "CSS Modules"],
+    tags: ["Styled Components", "StyleX", "Tailwind", "Sass", "CSS"],
   },
   {
     category: "Design systems",
@@ -53,7 +61,7 @@ const skills = [
 
 export function Skills() {
   return (
-    <PageGridSection id="skills">
+    <Section id="skills">
       <SectionContent>
         <SectionHeader>Skills</SectionHeader>
         {skills.map((skill) => (
@@ -63,6 +71,6 @@ export function Skills() {
           </Row>
         ))}
       </SectionContent>
-    </PageGridSection>
+    </Section>
   );
 }

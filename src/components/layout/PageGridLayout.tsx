@@ -6,7 +6,7 @@ interface PageGridLayoutProps {
 }
 
 const Grid = styled.div(({ theme }) => ({
-  backgroundColor: theme.colors.background.warm,
+  backgroundColor: theme.colors.background.night,
   columnGap: "1.5rem",
   display: "grid",
   gridTemplateColumns:

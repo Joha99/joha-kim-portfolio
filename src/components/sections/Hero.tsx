@@ -4,7 +4,7 @@ import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const Section = styled(PageGridSection)(({ theme }) => ({
   height: "calc(100vh - (2 * 8px))",
-  padding: theme.spacing["12"],
+  padding: theme.spacing["20"],
 }));
 
 const Content = styled.div(() => ({
@@ -17,10 +17,9 @@ const Content = styled.div(() => ({
 
 const Title = styled.h3(({ theme }) => ({
   alignSelf: "start",
-  color: theme.colors.font.muted,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.semibold,
+  fontWeight: theme.fontWeights.medium,
   gridColumn: "1 / 2",
   gridRow: "1 / 2",
 }));
@@ -28,56 +27,50 @@ const Title = styled.h3(({ theme }) => ({
 const Location = styled.h3(({ theme }) => ({
   alignItems: "end",
   alignSelf: "start",
-  color: theme.colors.font.muted,
   display: "flex",
   flexDirection: "column",
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.semibold,
+  fontWeight: theme.fontWeights.medium,
   gridColumn: "4 / 5",
   gridRow: "1 / 2",
   textAlign: "right",
 }));
 
-const Name = styled.h1(({ theme }) => ({
+const HeroText = styled.h2(({ theme }) => ({
   fontFamily: theme.fonts.mono,
-  fontSize: "150px",
-  gridColumn: "1 / -1",
-  gridRow: "2 / 4",
-  placeSelf: "center",
+  fontSize: theme.fontSizes["xl"],
+  fontWeight: theme.fontWeights.medium,
+  gridColumn: "4 / 5",
+  gridRow: "3 / 5",
+  alignSelf: "end",
+  textAlign: "right",
 }));
 
-const HeroText = styled.h2(({ theme }) => ({
+const Name = styled.h1(({ theme }) => ({
   alignSelf: "end",
-  color: theme.colors.font.muted,
   fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes["3xl"],
-  fontWeight: theme.fontWeights.hero,
+  fontSize: "150px",
   gridColumn: "1 / 4",
-  gridRow: "4 / 5",
+  gridRow: "3 / 5",
+  lineHeight: 1,
+  color: theme.colors.accent.volt,
 }));
 
 export function Hero() {
   return (
     <Section>
       <Content>
-        <Title>
-          <span>ARTIST &</span>
-          <br />
-          <span>ENGINEER</span>
-        </Title>
-        <Location>
-          <span>WASHINGTON, DC</span>
-          <span>USA</span>
-        </Location>
-        <Name>joha kim</Name>
+        <Title>ARTIST & ENGINEER</Title>
+        <Location>WASHINGTON, DC</Location>
+
         <HeroText>
           <span>Crafting and engineering</span>
           <br />
           <span>pixel-perfect UI and delightful interactions</span>
           <br />
-          <span>with a touch of whimsy.</span>
         </HeroText>
+        <Name>joha kim</Name>
       </Content>
     </Section>
   );

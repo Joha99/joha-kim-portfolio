@@ -1,120 +1,75 @@
-import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const TrackWrapper = styled.div(() => ({
-  gridColumn: "1 / -1",
-  overflow: "hidden",
-  perspective: "1200px",
+const MasonryGrid = styled.div(({ theme }) => ({
+  columnCount: 2,
+  columnGap: theme.spacing["24"],
+  marginTop: theme.spacing["40"],
 }));
 
-const Track = styled.div(({ theme }) => ({
+const Card = styled.div(({ theme }) => ({
+  breakInside: "avoid",
+  marginBottom: theme.spacing["24"],
+}));
+
+const ImageSlot = styled.div<{ $height: string }>(({ theme, $height }) => ({
+  backgroundColor: theme.colors.border.subtle,
+  borderRadius: theme.radii.xl,
+  height: $height,
+}));
+
+const CardTitle = styled.h3(({ theme }) => ({
+  fontSize: theme.fontSizes.lg,
+  fontWeight: theme.fontWeights.semibold,
+  marginTop: theme.spacing["12"],
+}));
+
+const Tags = styled.div(({ theme }) => ({
+  color: theme.colors.font.inverseMuted,
   display: "flex",
-  gap: theme.spacing["24"],
-  overflowX: "auto",
-  padding: `${theme.spacing["48"]} ${theme.spacing["64"]}`,
-  scrollSnapType: "x mandatory",
-  scrollbarWidth: "none",
-  "&::-webkit-scrollbar": {
-    display: "none",
-  },
+  flexWrap: "wrap",
+  fontFamily: theme.fonts.mono,
+  fontSize: theme.fontSizes.xs,
+  gap: theme.spacing["8"],
+  marginTop: theme.spacing["8"],
 }));
 
-const Card = styled.div<{ $opacity: number; $rotateY: number; $scale: number }>(
-  ({ theme, $opacity, $rotateY, $scale }) => ({
-    backgroundColor: theme.colors.background.primary,
-    borderRadius: theme.radii.lg,
-    flex: "0 0 280px",
-    height: "360px",
-    opacity: $opacity,
-    scrollSnapAlign: "center",
-    transform: `perspective(1200px) rotateY(${$rotateY}deg) scale(${$scale})`,
-    transition: "transform 0.3s ease, opacity 0.3s ease",
-  }),
-);
+const Tag = styled.span(({ theme }) => ({
+  backgroundColor: theme.colors.border.inverse,
+  borderRadius: theme.radii.full,
+  padding: `${theme.spacing["4"]} ${theme.spacing["12"]}`,
+}));
 
 const artworks = [
-  { id: 1, label: "Artwork 1" },
-  { id: 2, label: "Artwork 2" },
-  { id: 3, label: "Artwork 3" },
-  { id: 4, label: "Artwork 4" },
-  { id: 5, label: "Artwork 5" },
-  { id: 6, label: "Artwork 6" },
-  { id: 7, label: "Artwork 7" },
+  { id: 1, title: "Artwork 1", height: "320px", tags: ["Illustration", "Digital"] },
+  { id: 2, title: "Artwork 2", height: "420px", tags: ["3D", "Motion"] },
+  { id: 3, title: "Artwork 3", height: "280px", tags: ["Typography", "Print"] },
+  { id: 4, title: "Artwork 4", height: "380px", tags: ["Illustration", "Branding"] },
+  { id: 5, title: "Artwork 5", height: "300px", tags: ["Digital", "UI"] },
+  { id: 6, title: "Artwork 6", height: "450px", tags: ["3D", "Rendering"] },
 ];
 
-function getCardTransform(
-  cardEl: HTMLElement,
-  trackEl: HTMLElement,
-): { opacity: number; rotateY: number; scale: number } {
-  const trackRect = trackEl.getBoundingClientRect();
-  const cardRect = cardEl.getBoundingClientRect();
-  const trackCenter = trackRect.left + trackRect.width / 2;
-  const cardCenter = cardRect.left + cardRect.width / 2;
-  const offset = cardCenter - trackCenter;
-  const maxOffset = trackRect.width / 2;
-  const normalized = Math.max(-1, Math.min(1, offset / maxOffset));
-
-  return {
-    opacity: 1 - Math.abs(normalized) * 0.4,
-    rotateY: normalized * -50,
-    scale: 1 - Math.abs(normalized) * 0.1,
-  };
-}
-
 export function Artwork() {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const [transforms, setTransforms] = useState(
-    artworks.map(() => ({ opacity: 1, rotateY: 0, scale: 1 })),
-  );
-
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-
-    const update = () => {
-      const next = cardRefs.current.map((card) => {
-        if (!card || !track) return { opacity: 1, rotateY: 0, scale: 1 };
-        return getCardTransform(card, track);
-      });
-      setTransforms(next);
-    };
-
-    update();
-    track.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-
-    return () => {
-      track.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
   return (
-    <PageGridSection id="artwork">
+    <PageGridSection id="artwork" style={{ minHeight: "auto", scrollSnapAlign: "start" }}>
       <SectionContent>
         <SectionHeader>Craft & Motion</SectionHeader>
-      </SectionContent>
-      <TrackWrapper>
-        <Track ref={trackRef}>
-          {artworks.map((item, i) => (
-            <Card
-              key={item.id}
-              ref={(el) => {
-                cardRefs.current[i] = el;
-              }}
-              $opacity={transforms[i].opacity}
-              $rotateY={transforms[i].rotateY}
-              $scale={transforms[i].scale}
-            >
-              {item.label}
+        <MasonryGrid>
+          {artworks.map((item) => (
+            <Card key={item.id}>
+              <ImageSlot $height={item.height} />
+              <CardTitle>{item.title}</CardTitle>
+              <Tags>
+                {item.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </Tags>
             </Card>
           ))}
-        </Track>
-      </TrackWrapper>
+        </MasonryGrid>
+      </SectionContent>
     </PageGridSection>
   );
 }

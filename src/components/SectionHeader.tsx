@@ -5,9 +5,11 @@ interface SectionHeaderProps {
 }
 
 const Heading = styled.h2(({ theme }) => ({
-  fontSize: theme.fontSizes["5xl"],
-  fontWeight: theme.fontWeights.bold,
-  textTransform: "uppercase",
+  fontFamily: theme.fonts.display,
+  color: theme.colors.font.inverse,
+  fontSize: theme.fontSizes["6xl"],
+  fontWeight: theme.fontWeights.semibold,
+  // textTransform: "uppercase",
 }));
 
 export function SectionHeader({ children }: SectionHeaderProps) {
