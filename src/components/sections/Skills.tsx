@@ -19,13 +19,14 @@ const Row = styled.div(({ theme }) => ({
 
 const Category = styled.h3(({ theme }) => ({
   fontSize: theme.fontSizes.lg,
-  fontWeight: theme.fontWeights.normal,
+  fontWeight: theme.fontWeights.semibold,
 }));
 
 const Tags = styled.span(({ theme }) => ({
   color: theme.colors.font.muted,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.sm,
+  fontWeight: theme.fontWeights.medium,
   textTransform: "uppercase",
 }));
 
@@ -39,11 +40,11 @@ const skills = [
     tags: ["Styled Components", "StyleX", "Tailwind", "Sass", "CSS Modules"],
   },
   {
-    category: "Design Systems",
+    category: "Design systems",
     tags: ["Design Tokens", "Component APIs", "Accessibility", "SVG", "Figma"],
   },
   {
-    category: "State Management",
+    category: "State management",
     tags: ["Zustand", "Redux"],
   },
   {
