@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const Section = styled(PageGridSection)(() => ({
-  backgroundColor: "white",
+  paddingBlock: 0,
   height: "calc(100vh - 4rem)",
 }));
 

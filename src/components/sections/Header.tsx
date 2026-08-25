@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const StyledHeader = styled(PageGridSection).attrs({ as: "header" })(() => ({
-  backgroundColor: "white",
+  paddingBlock: 0,
   height: "4rem",
 }));
 

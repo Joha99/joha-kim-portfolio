@@ -2,19 +2,18 @@ import styled from "styled-components";
 
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
-const Section = styled(PageGridSection)(() => ({
-  backgroundColor: "white",
-  minHeight: "1000px",
-}));
+const Section = styled(PageGridSection)(() => ({}));
 
 const Content = styled.div(() => ({
   gridColumn: "2 / -2",
 }));
 
-export function Body() {
+export function Artwork() {
   return (
-    <Section>
-      <Content>Body section</Content>
+    <Section id="artwork">
+      <Content>
+        <h2>Craft & Motion</h2>
+      </Content>
     </Section>
   );
 }
