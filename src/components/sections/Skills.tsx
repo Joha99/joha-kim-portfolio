@@ -6,7 +6,7 @@ import {
 } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 
-const Section = styled(PageGridSection)(({ theme }) => ({
+const Section = styled(PageGridSection)(() => ({
   placeContent: "center",
 }));
 
