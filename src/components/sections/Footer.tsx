@@ -21,7 +21,7 @@ const Content = styled(SectionContent)(() => ({
 const CTA = styled.h2(({ theme }) => ({
   fontFamily: theme.fonts.display,
   fontSize: theme.fontSizes["6xl"],
-  fontWeight: theme.fontWeights.normal,
+  fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / 4",
   lineHeight: 1,
 }));

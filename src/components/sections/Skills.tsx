@@ -16,7 +16,7 @@ const Row = styled.div(({ theme }) => ({
   display: "flex",
   justifyContent: "space-between",
   paddingTop: theme.spacing["8"],
-  paddingBottom: theme.spacing["40"],
+  paddingBottom: theme.spacing["48"],
 }));
 
 const Category = styled.h3(({ theme }) => ({

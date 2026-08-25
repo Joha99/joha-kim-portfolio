@@ -10,36 +10,45 @@ const MasonryGrid = styled.div(({ theme }) => ({
 }));
 
 const Card = styled.div(({ theme }) => ({
+  borderRadius: theme.radii.xl,
   breakInside: "avoid",
   marginBottom: theme.spacing["24"],
+  overflow: "hidden",
 }));
 
 const ImageSlot = styled.div<{ $height: string }>(({ theme, $height }) => ({
   backgroundColor: theme.colors.border.subtle,
-  borderRadius: theme.radii.xl,
   height: $height,
+}));
+
+const CardBody = styled.div(({ theme }) => ({
+  alignItems: "center",
+  backgroundColor: theme.colors.border.inverse,
+  display: "flex",
+  justifyContent: "space-between",
+  padding: `${theme.spacing["12"]} ${theme.spacing["16"]}`,
 }));
 
 const CardTitle = styled.h3(({ theme }) => ({
   fontSize: theme.fontSizes.lg,
   fontWeight: theme.fontWeights.semibold,
-  marginTop: theme.spacing["12"],
 }));
 
 const Tags = styled.div(({ theme }) => ({
-  color: theme.colors.font.inverseMuted,
   display: "flex",
   flexWrap: "wrap",
-  fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes.xs,
   gap: theme.spacing["8"],
-  marginTop: theme.spacing["8"],
 }));
 
 const Tag = styled.span(({ theme }) => ({
-  backgroundColor: theme.colors.border.inverse,
+  backgroundColor: theme.colors.accent.ember,
   borderRadius: theme.radii.full,
+  color: theme.colors.font.inverse,
+  fontFamily: theme.fonts.mono,
+  fontSize: theme.fontSizes.sm,
+  fontWeight: theme.fontWeights.bold,
   padding: `${theme.spacing["4"]} ${theme.spacing["12"]}`,
+  textTransform: "lowercase",
 }));
 
 const artworks = [
@@ -53,19 +62,24 @@ const artworks = [
 
 export function Artwork() {
   return (
-    <PageGridSection id="artwork" style={{ minHeight: "auto", scrollSnapAlign: "start" }}>
+    <PageGridSection
+      id="artwork"
+      style={{ minHeight: "auto", scrollSnapAlign: "start" }}
+    >
       <SectionContent>
         <SectionHeader>Craft & Motion</SectionHeader>
         <MasonryGrid>
           {artworks.map((item) => (
             <Card key={item.id}>
               <ImageSlot $height={item.height} />
-              <CardTitle>{item.title}</CardTitle>
-              <Tags>
-                {item.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </Tags>
+              <CardBody>
+                <CardTitle>{item.title}</CardTitle>
+                <Tags>
+                  {item.tags.map((tag) => (
+                    <Tag key={tag}>{tag}</Tag>
+                  ))}
+                </Tags>
+              </CardBody>
             </Card>
           ))}
         </MasonryGrid>

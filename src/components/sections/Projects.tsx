@@ -7,6 +7,10 @@ import {
 } from "@/components/layout/PageGridLayout";
 import { SectionHeader } from "@/components/SectionHeader";
 
+const Section = styled(PageGridSection)(() => ({
+  placeContent: "center",
+}));
+
 const CardGrid = styled.div(({ theme }) => ({
   display: "grid",
   gap: theme.spacing["24"],
@@ -76,7 +80,7 @@ const projects = [
 
 export function Projects() {
   return (
-    <PageGridSection id="projects">
+    <Section id="projects">
       <SectionContent>
         <SectionHeader>Featured Projects</SectionHeader>
         <CardGrid>
@@ -94,6 +98,6 @@ export function Projects() {
           ))}
         </CardGrid>
       </SectionContent>
-    </PageGridSection>
+    </Section>
   );
 }
