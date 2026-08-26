@@ -29,7 +29,7 @@ const CTA = styled.h2(({ theme }) => ({
 const List = styled.ul(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  fontFamily: theme.fonts.mono,
+  fontFamily: theme.fonts.sans,
   fontSize: theme.fontSizes.sm,
   gap: theme.spacing["8"],
   gridColumn: "4 / 5",
@@ -41,20 +41,16 @@ const ListItem = styled.li(() => ({
   textAlign: "right",
 }));
 
-const Address = styled(ListItem)(({ theme }) => ({
-  fontWeight: theme.fontWeights.semibold,
-}));
-
 export function Footer() {
   return (
     <StyledFooter id="contact">
       <Content>
         <CTA>Let's build something together.</CTA>
         <List>
-          <Address>
+          <ListItem>
             <p>3 Tingey Sq SE</p>
             <p>Washington DC 20003</p>
-          </Address>
+          </ListItem>
           <ListItem>
             <p>+1 571 279 4318</p>
           </ListItem>

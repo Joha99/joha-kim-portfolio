@@ -5,6 +5,7 @@ import { PageGridSection } from "@/components/layout/PageGridLayout";
 const Section = styled(PageGridSection)(({ theme }) => ({
   height: "calc(100vh - (2 * 8px))",
   padding: theme.spacing["20"],
+  position: "relative",
 }));
 
 const Content = styled.div(() => ({
@@ -22,7 +23,7 @@ const Title = styled.h3(({ theme }) => ({
   fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / 2",
   gridRow: "1 / 2",
-  color: theme.colors.accent.volt,
+  color: theme.colors.font.secondary,
 }));
 
 const Location = styled.h3(({ theme }) => ({
@@ -36,7 +37,7 @@ const Location = styled.h3(({ theme }) => ({
   gridColumn: "4 / 5",
   gridRow: "1 / 2",
   textAlign: "right",
-  color: theme.colors.accent.volt,
+  color: theme.colors.font.secondary,
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
@@ -48,7 +49,7 @@ const HeroText = styled.h2(({ theme }) => ({
   gridColumn: "1 / 2",
   gridRow: "3 / 5",
   textAlign: "left",
-  color: theme.colors.accent.volt,
+  color: theme.colors.font.secondary,
 }));
 
 const Name = styled.h1(({ theme }) => ({
@@ -65,6 +66,54 @@ const Name = styled.h1(({ theme }) => ({
 export function Hero() {
   return (
     <Section>
+      {/* <div
+        style={{
+          position: "absolute",
+          height: "250px",
+          backgroundColor: "#E8572A",
+          width: "140%",
+          transform: "rotate(-5deg)",
+          top: "10%",
+          display: "flex",
+          justifyContent: "center",
+          color: "#111",
+          left: "-20px",
+        }}
+      >
+        Joha Kim
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          height: "250px",
+          backgroundColor: "#3A5BD9",
+          width: "140%",
+          transform: "rotate(-5deg)",
+          top: "60%",
+          display: "flex",
+          justifyContent: "center",
+          color: "#111",
+          left: "-20px",
+        }}
+      >
+        Joha Kim
+      </div>
+      <div
+        style={{
+          position: "absolute",
+          height: "250px",
+          backgroundColor: "#c7ef00",
+          width: "140%",
+          transform: "rotate(5deg)",
+          top: "40%",
+          display: "flex",
+          justifyContent: "center",
+          color: "#111",
+          left: "-20px",
+        }}
+      >
+        Joha Kim
+      </div> */}
       <Content>
         <Title>ARTIST & ENGINEER</Title>
         <Location>WASHINGTON, DC</Location>

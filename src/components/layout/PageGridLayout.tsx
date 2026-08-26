@@ -5,8 +5,7 @@ interface PageGridLayoutProps {
   children: ReactNode;
 }
 
-const Grid = styled.div(({ theme }) => ({
-  backgroundColor: theme.colors.background.night,
+const Grid = styled.div(() => ({
   columnGap: "1.5rem",
   display: "grid",
   gridTemplateColumns: "repeat(12, 1fr)",

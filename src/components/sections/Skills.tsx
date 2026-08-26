@@ -44,6 +44,7 @@ const Content = styled(SectionContent)(() => ({
 }));
 
 const Row = styled.div(({ theme }) => ({
+  backgroundColor: theme.colors.background.night,
   borderBottom: `1px solid ${theme.colors.border.subtle}`,
   flex: 1,
   overflow: "hidden",
