@@ -1,36 +1,9 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 import {
   PageGridSection,
   SectionContent,
 } from "@/components/layout/PageGridLayout";
-import { SectionHeader } from "@/components/SectionHeader";
-
-const Section = styled(PageGridSection)(() => ({
-  placeContent: "center",
-}));
-
-const Row = styled.div(({ theme }) => ({
-  alignItems: "center",
-  borderBottom: `1px solid ${theme.colors.border.subtle}`,
-  display: "flex",
-  justifyContent: "space-between",
-  paddingTop: theme.spacing["8"],
-  paddingBottom: theme.spacing["48"],
-}));
-
-const Category = styled.h3(({ theme }) => ({
-  fontSize: theme.fontSizes.lg,
-  fontWeight: theme.fontWeights.semibold,
-}));
-
-const Tags = styled.span(({ theme }) => ({
-  color: theme.colors.font.inverseMuted,
-  fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes.sm,
-  fontWeight: theme.fontWeights.medium,
-  textTransform: "uppercase",
-}));
 
 const skills = [
   {
@@ -43,7 +16,7 @@ const skills = [
   },
   {
     category: "Design systems",
-    tags: ["Design Tokens", "Component APIs", "Accessibility", "SVG", "Figma"],
+    tags: ["Design Tokens", "UI Components", "Accessibility", "SVG", "Figma"],
   },
   {
     category: "State management",
@@ -59,18 +32,73 @@ const skills = [
   },
 ];
 
+const Section = styled(PageGridSection)(() => ({
+  alignContent: "stretch",
+  paddingInline: 0,
+}));
+
+const Content = styled(SectionContent)(() => ({
+  display: "flex",
+  flexDirection: "column",
+}));
+
+const Row = styled.div(({ theme }) => ({
+  alignItems: "center",
+  borderBottom: `1px solid ${theme.colors.border.subtle}`,
+  display: "flex",
+  flex: 1,
+  overflow: "hidden",
+  "&:first-of-type": {
+    borderTop: `1px solid ${theme.colors.border.subtle}`,
+  },
+}));
+
+const marquee = keyframes`
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-33.33%);
+  }
+`;
+
+const MarqueeTrack = styled.div<{ $duration: number }>(({ $duration }) => [
+  css`
+    animation: ${marquee} ${$duration}s linear infinite;
+  `,
+  {
+    display: "flex",
+    whiteSpace: "nowrap",
+  },
+]);
+
+const Tags = styled.span(({ theme }) => ({
+  color: theme.colors.font.inverseMuted,
+  fontFamily: theme.fonts.display,
+  fontSize: theme.fontSizes["6xl"],
+  fontWeight: theme.fontWeights.normal,
+  textTransform: "uppercase",
+}));
+
 export function Skills() {
   return (
     <Section id="skills">
-      <SectionContent>
-        <SectionHeader>Skills</SectionHeader>
-        {skills.map((skill) => (
-          <Row key={skill.category}>
-            <Category>{skill.category}</Category>
-            <Tags>{skill.tags.join(" · ")}</Tags>
-          </Row>
-        ))}
-      </SectionContent>
+      <Content>
+        {skills.map((skill) => {
+          const text = " " + skill.tags.join(" · ") + " · ";
+          const duration = text.length * 0.4;
+
+          return (
+            <Row key={skill.category}>
+              <MarqueeTrack $duration={duration}>
+                <Tags>{text}</Tags>
+                <Tags>{text}</Tags>
+                <Tags>{text}</Tags>
+              </MarqueeTrack>
+            </Row>
+          );
+        })}
+      </Content>
     </Section>
   );
 }

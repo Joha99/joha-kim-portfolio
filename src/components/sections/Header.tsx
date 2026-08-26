@@ -7,7 +7,6 @@ const StyledHeader = styled(PageGridSection).attrs({ as: "header" })(
   ({ theme }) => ({
     alignItems: "center",
     display: "flex",
-    fontWeight: theme.fontWeights.medium,
     height: "4rem",
     justifyContent: "center",
     left: 0,
@@ -27,8 +26,10 @@ const Nav = styled.nav(({ theme }) => ({
   borderRadius: theme.radii.sm,
   color: theme.colors.font.inverse,
   display: "flex",
+  fontFamily: theme.fonts.display,
+  fontSize: theme.fontSizes.sm,
   fontWeight: theme.fontWeights.bold,
-  gridColumn: "2 / -2",
+  gridColumn: "1 / -1",
   justifyContent: "space-between",
   padding: theme.spacing["12"],
 }));
@@ -42,7 +43,6 @@ const Links = styled.ul(({ theme }) => ({
 const Link = styled.a(({ theme }) => ({
   alignItems: "center",
   display: "flex",
-  fontSize: theme.fontSizes.xs,
   gap: theme.spacing["2"],
 }));
 

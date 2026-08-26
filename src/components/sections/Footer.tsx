@@ -45,14 +45,6 @@ const Address = styled(ListItem)(({ theme }) => ({
   fontWeight: theme.fontWeights.semibold,
 }));
 
-const TechStack = styled.p(({ theme }) => ({
-  color: theme.colors.font.secondary,
-  fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes.sm,
-  gridColumn: "1 / 5",
-  justifySelf: "end",
-}));
-
 export function Footer() {
   return (
     <StyledFooter id="contact">
@@ -88,7 +80,6 @@ export function Footer() {
             </a>
           </ListItem>
         </List>
-        <TechStack>Built with React + TypeScript + Styled Components</TechStack>
       </Content>
     </StyledFooter>
   );

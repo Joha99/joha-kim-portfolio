@@ -9,8 +9,7 @@ const Grid = styled.div(({ theme }) => ({
   backgroundColor: theme.colors.background.night,
   columnGap: "1.5rem",
   display: "grid",
-  gridTemplateColumns:
-    "1fr repeat(12, minmax(0, calc((1200px - 11 * 1.5rem) / 12))) 1fr",
+  gridTemplateColumns: "repeat(12, 1fr)",
 }));
 
 export const PageGridSection = styled.section(({ theme }) => ({
@@ -18,13 +17,13 @@ export const PageGridSection = styled.section(({ theme }) => ({
   gridColumn: "1 / -1",
   gridTemplateColumns: "subgrid",
   minHeight: "100vh",
-  paddingBlock: theme.spacing["80"],
+  padding: theme.spacing["40"],
   scrollSnapAlign: "center",
   scrollSnapStop: "always",
 }));
 
 export const SectionContent = styled.div(() => ({
-  gridColumn: "2 / -2",
+  gridColumn: "1 / -1",
 }));
 
 export function PageGridLayout({ children }: PageGridLayoutProps) {

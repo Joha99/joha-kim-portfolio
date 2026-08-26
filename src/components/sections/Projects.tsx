@@ -71,11 +71,6 @@ const projects = [
     description:
       "Led the Single Report Viewer frontend redesign, shipped in a single sprint. Built custom SVG loading skeletons and created a shared reporting library adopted across the org.",
   },
-  {
-    title: "Dashboards & Reporting",
-    description:
-      "Led the Single Report Viewer frontend redesign, shipped in a single sprint. Built custom SVG loading skeletons and created a shared reporting library adopted across the org.",
-  },
 ];
 
 export function Projects() {

@@ -9,7 +9,7 @@ const Section = styled(PageGridSection)(({ theme }) => ({
 
 const Content = styled.div(() => ({
   display: "grid",
-  gridColumn: "2 / -2",
+  gridColumn: "1 / -1",
   gridTemplateColumns: "repeat(4, 1fr)",
   gridTemplateRows: "repeat(4, 1fr)",
   height: "100%",
@@ -38,23 +38,23 @@ const Location = styled.h3(({ theme }) => ({
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
+  alignSelf: "end",
   fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes["xl"],
+  fontSize: theme.fontSizes.xl,
   fontWeight: theme.fontWeights.medium,
   gridColumn: "4 / 5",
   gridRow: "3 / 5",
-  alignSelf: "end",
   textAlign: "right",
 }));
 
 const Name = styled.h1(({ theme }) => ({
   alignSelf: "end",
+  color: theme.colors.accent.volt,
   fontFamily: theme.fonts.mono,
   fontSize: "150px",
   gridColumn: "1 / 4",
   gridRow: "3 / 5",
   lineHeight: 1,
-  color: theme.colors.accent.volt,
 }));
 
 export function Hero() {
@@ -63,12 +63,10 @@ export function Hero() {
       <Content>
         <Title>ARTIST & ENGINEER</Title>
         <Location>WASHINGTON, DC</Location>
-
         <HeroText>
           <span>Crafting and engineering</span>
           <br />
           <span>pixel-perfect UI and delightful interactions</span>
-          <br />
         </HeroText>
         <Name>joha kim</Name>
       </Content>
