@@ -10,13 +10,13 @@ const Section = styled(PageGridSection)(({ theme }) => ({
 }));
 
 const Top = styled.div(({ theme }) => ({
-  display: "flex",
-  gridColumn: "1 / -1",
-  justifyContent: "space-between",
   color: theme.colors.font.inverseMuted,
+  display: "flex",
+  fontFamily: theme.fonts.display,
   fontSize: theme.fontSizes.xl,
   fontWeight: theme.fontWeights.semibold,
-  fontFamily: theme.fonts.display,
+  gridColumn: "1 / -1",
+  justifyContent: "space-between",
 }));
 
 const Title = styled.h3(() => ({
@@ -25,9 +25,9 @@ const Title = styled.h3(() => ({
 }));
 
 const Location = styled.h3(() => ({
-  textAlign: "right",
   display: "flex",
   flexDirection: "column",
+  textAlign: "right",
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
@@ -46,7 +46,7 @@ const NameWrapper = styled.div(({ theme }) => ({
   borderRadius: theme.radii.sm,
 }));
 
-const NameSvg = styled.svg(({}) => ({
+const NameSvg = styled.svg(() => ({
   display: "block",
   width: "100%",
 }));
