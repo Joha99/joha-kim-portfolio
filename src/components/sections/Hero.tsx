@@ -17,11 +17,12 @@ const Content = styled.div(() => ({
 
 const Title = styled.h3(({ theme }) => ({
   alignSelf: "start",
-  fontFamily: theme.fonts.mono,
+  fontFamily: theme.fonts.sans,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.medium,
+  fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / 2",
   gridRow: "1 / 2",
+  color: theme.colors.accent.volt,
 }));
 
 const Location = styled.h3(({ theme }) => ({
@@ -29,32 +30,36 @@ const Location = styled.h3(({ theme }) => ({
   alignSelf: "start",
   display: "flex",
   flexDirection: "column",
-  fontFamily: theme.fonts.mono,
+  fontFamily: theme.fonts.sans,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.medium,
+  fontWeight: theme.fontWeights.semibold,
   gridColumn: "4 / 5",
   gridRow: "1 / 2",
   textAlign: "right",
+  color: theme.colors.accent.volt,
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
   alignSelf: "end",
-  fontFamily: theme.fonts.mono,
+  fontFamily: theme.fonts.sans,
   fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.medium,
-  gridColumn: "4 / 5",
+  fontWeight: theme.fontWeights.semibold,
+  textTransform: "uppercase",
+  gridColumn: "1 / 2",
   gridRow: "3 / 5",
-  textAlign: "right",
+  textAlign: "left",
+  color: theme.colors.accent.volt,
 }));
 
 const Name = styled.h1(({ theme }) => ({
   alignSelf: "end",
-  color: theme.colors.accent.volt,
-  fontFamily: theme.fonts.mono,
+  color: theme.colors.font.secondary,
+  fontFamily: theme.fonts.display,
   fontSize: "150px",
-  gridColumn: "1 / 4",
+  gridColumn: "2 / 5",
   gridRow: "3 / 5",
   lineHeight: 1,
+  textAlign: "right",
 }));
 
 export function Hero() {
@@ -68,7 +73,7 @@ export function Hero() {
           <br />
           <span>pixel-perfect UI and delightful interactions</span>
         </HeroText>
-        <Name>joha kim</Name>
+        <Name>JOHA KIM</Name>
       </Content>
     </Section>
   );
