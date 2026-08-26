@@ -7,9 +7,8 @@ interface SectionHeaderProps {
 const Heading = styled.h2(({ theme }) => ({
   color: theme.colors.font.inverse,
   fontFamily: theme.fonts.display,
+  fontSize: theme.fontSizes["5xl"],
   fontWeight: theme.fontWeights.bold,
-  height: "4rem",
-  marginBottom: theme.spacing["40"],
 }));
 
 export function SectionHeader({ children }: SectionHeaderProps) {

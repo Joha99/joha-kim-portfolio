@@ -32,7 +32,7 @@ const List = styled.ul(({ theme }) => ({
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.base,
   gap: theme.spacing["8"],
-  gridColumn: "4 / 5",
+  gridColumn: "4 / -1",
   listStyleType: "none",
   textTransform: "lowercase",
 }));
