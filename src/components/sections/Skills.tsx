@@ -75,7 +75,7 @@ const MarqueeTrack = styled.div<{ $duration: number }>(({ $duration }) => [
 const Tags = styled.span(({ theme }) => ({
   color: theme.colors.font.inverseMuted,
   fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes["6xl"],
+  fontSize: theme.fontSizes["7xl"],
   fontWeight: theme.fontWeights.normal,
   textTransform: "uppercase",
 }));
