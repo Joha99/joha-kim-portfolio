@@ -79,8 +79,8 @@ const MarqueeSvg = styled.svg(() => ({
 
 const SvgText = styled.text(({ theme }) => ({
   fill: theme.colors.font.inverseMuted,
-  fontFamily: theme.fonts.sans,
-  fontWeight: theme.fontWeights.medium,
+  fontFamily: theme.fonts.pixel,
+  fontWeight: theme.fontWeights.normal,
 }));
 
 function SkillRow({ text, duration }: { text: string; duration: number }) {
@@ -92,13 +92,15 @@ function SkillRow({ text, duration }: { text: string; duration: number }) {
   const displayText = text.toUpperCase();
 
   useEffect(() => {
-    if (textRef.current) {
+    const measure = () => {
+      if (!textRef.current) return;
       const bbox = textRef.current.getBBox();
       const pad = 4;
       setViewBox(
         `${bbox.x - pad} ${bbox.y - pad} ${bbox.width + pad * 2} ${bbox.height + pad * 2}`,
       );
-    }
+    };
+    document.fonts.ready.then(measure);
   }, [displayText]);
 
   useEffect(() => {

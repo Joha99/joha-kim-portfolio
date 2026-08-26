@@ -1,129 +1,111 @@
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 
 import { PageGridSection } from "@/components/layout/PageGridLayout";
 
 const Section = styled(PageGridSection)(({ theme }) => ({
-  height: "calc(100vh - (2 * 8px))",
-  padding: theme.spacing["20"],
-  position: "relative",
-}));
-
-const Content = styled.div(() => ({
-  display: "grid",
-  gridColumn: "1 / -1",
-  gridTemplateColumns: "repeat(4, 1fr)",
-  gridTemplateRows: "repeat(4, 1fr)",
-  height: "100%",
-}));
-
-const Title = styled.h3(({ theme }) => ({
-  alignSelf: "start",
-  fontFamily: theme.fonts.sans,
-  fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.semibold,
-  gridColumn: "1 / 2",
-  gridRow: "1 / 2",
-  color: theme.colors.font.secondary,
-}));
-
-const Location = styled.h3(({ theme }) => ({
-  alignItems: "end",
-  alignSelf: "start",
   display: "flex",
   flexDirection: "column",
-  fontFamily: theme.fonts.sans,
+  padding: theme.spacing["20"],
+}));
+
+const Top = styled.div(({ theme }) => ({
+  display: "flex",
+  gridColumn: "1 / -1",
+  justifyContent: "space-between",
+  color: theme.colors.font.inverseMuted,
   fontSize: theme.fontSizes.xl,
   fontWeight: theme.fontWeights.semibold,
-  gridColumn: "4 / 5",
-  gridRow: "1 / 2",
+  fontFamily: theme.fonts.display,
+}));
+
+const Title = styled.h3(() => ({
+  display: "flex",
+  flexDirection: "column",
+}));
+
+const Location = styled.h3(() => ({
   textAlign: "right",
-  color: theme.colors.font.secondary,
+  display: "flex",
+  flexDirection: "column",
 }));
 
 const HeroText = styled.h2(({ theme }) => ({
-  alignSelf: "end",
-  fontFamily: theme.fonts.sans,
-  fontSize: theme.fontSizes.xl,
+  color: theme.colors.font.inverseMuted,
+  fontFamily: theme.fonts.display,
+  fontSize: theme.fontSizes["3xl"],
   fontWeight: theme.fontWeights.semibold,
+  gridColumn: "1 / -1",
+  marginBottom: theme.spacing["20"],
+  marginTop: "auto",
   textTransform: "uppercase",
-  gridColumn: "1 / 2",
-  gridRow: "3 / 5",
-  textAlign: "left",
-  color: theme.colors.font.secondary,
 }));
 
-const Name = styled.h1(({ theme }) => ({
-  alignSelf: "end",
-  color: theme.colors.font.secondary,
-  fontFamily: theme.fonts.display,
-  fontSize: "150px",
-  gridColumn: "2 / 5",
-  gridRow: "3 / 5",
-  lineHeight: 1,
-  textAlign: "right",
+const NameWrapper = styled.div(({ theme }) => ({
+  backgroundColor: theme.colors.accent.volt,
+  borderRadius: theme.radii.sm,
+}));
+
+const NameSvg = styled.svg(({}) => ({
+  display: "block",
+  width: "100%",
+}));
+
+const NameText = styled.text(({ theme }) => ({
+  fill: theme.colors.font.primary,
+  fontFamily: theme.fonts.hero,
+  fontWeight: theme.fontWeights.normal,
 }));
 
 export function Hero() {
+  const textRef = useRef<SVGTextElement>(null);
+  const [viewBox, setViewBox] = useState("0 0 1000 100");
+
+  useEffect(() => {
+    const measure = () => {
+      if (!textRef.current) return;
+      const bbox = textRef.current.getBBox();
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d")!;
+      ctx.font = `400 100px 'Bevan', serif`;
+      const metrics = ctx.measureText("JOHA KIM");
+      const pad = 2;
+      const y = -metrics.actualBoundingBoxAscent - pad;
+      const h =
+        metrics.actualBoundingBoxAscent +
+        metrics.actualBoundingBoxDescent +
+        pad * 2;
+      const padLeft = 3;
+      setViewBox(`${bbox.x - padLeft} ${y} ${bbox.width + padLeft} ${h}`);
+    };
+
+    document.fonts.ready.then(measure);
+  }, []);
+
   return (
     <Section>
-      {/* <div
-        style={{
-          position: "absolute",
-          height: "250px",
-          backgroundColor: "#E8572A",
-          width: "140%",
-          transform: "rotate(-5deg)",
-          top: "10%",
-          display: "flex",
-          justifyContent: "center",
-          color: "#111",
-          left: "-20px",
-        }}
-      >
-        Joha Kim
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          height: "250px",
-          backgroundColor: "#3A5BD9",
-          width: "140%",
-          transform: "rotate(-5deg)",
-          top: "60%",
-          display: "flex",
-          justifyContent: "center",
-          color: "#111",
-          left: "-20px",
-        }}
-      >
-        Joha Kim
-      </div>
-      <div
-        style={{
-          position: "absolute",
-          height: "250px",
-          backgroundColor: "#c7ef00",
-          width: "140%",
-          transform: "rotate(5deg)",
-          top: "40%",
-          display: "flex",
-          justifyContent: "center",
-          color: "#111",
-          left: "-20px",
-        }}
-      >
-        Joha Kim
-      </div> */}
-      <Content>
-        <Title>ARTIST & ENGINEER</Title>
-        <Location>WASHINGTON, DC</Location>
-        <HeroText>
-          <span>Crafting and engineering</span>
-          <br />
-          <span>pixel-perfect UI and delightful interactions</span>
-        </HeroText>
-        <Name>JOHA KIM</Name>
-      </Content>
+      <Top>
+        <Title>
+          <span>SOFTWARE ENGINEER</span>
+          <span>ARTIST</span>
+        </Title>
+        <Location>
+          <span>SEOUL, KOREA</span>
+          <span>WASHINGTON DC, USA</span>
+        </Location>
+      </Top>
+      <HeroText>
+        Crafting and engineering
+        <br />
+        pixel-perfect UI and delightful interactions
+      </HeroText>
+      <NameWrapper>
+        <NameSvg viewBox={viewBox} preserveAspectRatio="xMidYMid meet">
+          <NameText ref={textRef} x="0" fontSize="100">
+            JOHA KIM
+          </NameText>
+        </NameSvg>
+      </NameWrapper>
     </Section>
   );
 }

@@ -20,7 +20,7 @@ const Content = styled(SectionContent)(() => ({
 
 const CTA = styled.h2(({ theme }) => ({
   fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes["6xl"],
+  fontSize: theme.fontSizes["8xl"],
   fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / 4",
   lineHeight: 1,
@@ -29,8 +29,8 @@ const CTA = styled.h2(({ theme }) => ({
 const List = styled.ul(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  fontFamily: theme.fonts.sans,
-  fontSize: theme.fontSizes.sm,
+  fontFamily: theme.fonts.mono,
+  fontSize: theme.fontSizes.base,
   gap: theme.spacing["8"],
   gridColumn: "4 / 5",
   listStyleType: "none",

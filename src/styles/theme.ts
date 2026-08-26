@@ -27,8 +27,11 @@ export const theme = {
     },
   },
   fonts: {
-    display: "'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    display:
+      "'Space Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
+    hero: "'Bevan', serif",
     mono: "'IBM Plex Mono', ui-monospace, 'SF Mono', Consolas, monospace",
+    pixel: "'Geist Pixel', monospace",
     sans: "'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif",
   },
   fontWeights: {
@@ -49,7 +52,8 @@ export const theme = {
     "4xl": "36px",
     "5xl": "48px",
     "6xl": "70px",
-    "7xl": "100px",
+    "7xl": "90px",
+    "8xl": "100px",
   },
   radii: {
     sm: "4px",
