@@ -1,89 +1,153 @@
 import styled from "styled-components";
 
-import { PageGridSection, SectionContent } from "@/components/layout/PageGridLayout";
-import { SectionHeader } from "@/components/SectionHeader";
+import {
+  PageGridSection,
+  SectionContent,
+} from "@/components/layout/PageGridLayout";
 
-const MasonryGrid = styled.div(({ theme }) => ({
-  columnCount: 2,
-  columnGap: theme.spacing["24"],
-  marginTop: theme.spacing["40"],
+const artworks = [
+  {
+    id: 1,
+    title: "Portrait Study I",
+    src: "/images/artwork/digital-art-1.png",
+    height: "550px",
+    tags: ["Procreate", "Digital", "Portrait"],
+  },
+  {
+    id: 2,
+    title: "Portrait Study II",
+    src: "/images/artwork/digital-art-2.png",
+    height: "500px",
+    tags: ["Procreate", "Digital", "Portrait"],
+  },
+  {
+    id: 3,
+    title: "Portrait Study III",
+    src: "/images/artwork/digital-art-3.png",
+    height: "600px",
+    tags: ["Procreate", "Digital", "Portrait"],
+  },
+  {
+    id: 4,
+    title: "Portrait Study IV",
+    src: "/images/artwork/digital-art-4.png",
+    height: "520px",
+    tags: ["Procreate", "Digital", "Portrait"],
+  },
+  {
+    id: 5,
+    title: "Portrait Study V",
+    src: "/images/artwork/digital-art-5.png",
+    height: "500px",
+    tags: ["Procreate", "Digital", "Portrait"],
+  },
+  {
+    id: 6,
+    title: "Mountain Lake",
+    src: "/images/artwork/painting-1.png",
+    height: "630px",
+    rotate: "2deg",
+    tags: ["Oil", "Landscape"],
+  },
+  {
+    id: 7,
+    title: "Viking Ship",
+    src: "/images/artwork/painting-2.png",
+    height: "650px",
+    tags: ["Oil", "Seascape"],
+  },
+  {
+    id: 8,
+    title: "The Couple",
+    src: "/images/artwork/painting-3.jpg",
+    height: "650px",
+    tags: ["Oil", "Figurative"],
+  },
+];
+
+const Section = styled(PageGridSection)(() => ({
+  minHeight: "auto",
+  scrollSnapAlign: "start",
 }));
 
-const Card = styled.div(({ theme }) => ({
-  borderRadius: theme.radii.xl,
+const Header = styled.h2(({ theme }) => ({
+  color: theme.colors.font.inverse,
+  fontFamily: theme.fonts.display,
+  fontSize: theme.fontSizes["5xl"],
+  fontWeight: theme.fontWeights.bold,
+  marginBottom: theme.spacing["40"],
+}));
+
+const MasonryGrid = styled.div(({ theme }) => ({
+  columnCount: 3,
+  columnGap: theme.spacing["24"],
+}));
+
+const Card = styled.div(() => ({
   breakInside: "avoid",
-  marginBottom: theme.spacing["24"],
+}));
+
+const ImageWrapper = styled.div<{ $height: string }>(({ theme, $height }) => ({
+  borderRadius: theme.radii.sm,
+  height: $height,
   overflow: "hidden",
 }));
 
-const ImageSlot = styled.div<{ $height: string }>(({ theme, $height }) => ({
-  backgroundColor: theme.colors.border.subtle,
-  height: $height,
+const CardImage = styled.img<{ $rotate?: string }>(({ $rotate }) => ({
+  display: "block",
+  filter: "contrast(1.1)",
+  height: "100%",
+  objectFit: "cover",
+  transform: $rotate ? `rotate(${$rotate}) scale(1.08)` : undefined,
+  width: "100%",
 }));
 
 const CardBody = styled.div(({ theme }) => ({
   alignItems: "center",
-  backgroundColor: theme.colors.border.inverse,
   display: "flex",
   justifyContent: "space-between",
-  padding: `${theme.spacing["12"]} ${theme.spacing["16"]}`,
+  paddingBlock: theme.spacing["12"],
 }));
 
 const CardTitle = styled.h3(({ theme }) => ({
   fontSize: theme.fontSizes.lg,
-  fontWeight: theme.fontWeights.semibold,
+  fontWeight: theme.fontWeights.bold,
+  textTransform: "uppercase",
 }));
 
 const Tags = styled.div(({ theme }) => ({
+  color: theme.colors.font.inverseMuted,
   display: "flex",
   flexWrap: "wrap",
-  gap: theme.spacing["8"],
-}));
-
-const Tag = styled.span(({ theme }) => ({
-  backgroundColor: theme.colors.accent.ember,
-  borderRadius: theme.radii.full,
-  color: theme.colors.font.inverse,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.sm,
   fontWeight: theme.fontWeights.bold,
-  padding: `${theme.spacing["4"]} ${theme.spacing["12"]}`,
   textTransform: "lowercase",
 }));
 
-const artworks = [
-  { id: 1, title: "Artwork 1", height: "320px", tags: ["Illustration", "Digital"] },
-  { id: 2, title: "Artwork 2", height: "420px", tags: ["3D", "Motion"] },
-  { id: 3, title: "Artwork 3", height: "280px", tags: ["Typography", "Print"] },
-  { id: 4, title: "Artwork 4", height: "380px", tags: ["Illustration", "Branding"] },
-  { id: 5, title: "Artwork 5", height: "300px", tags: ["Digital", "UI"] },
-  { id: 6, title: "Artwork 6", height: "450px", tags: ["3D", "Rendering"] },
-];
-
 export function Artwork() {
   return (
-    <PageGridSection
-      id="artwork"
-      style={{ minHeight: "auto", scrollSnapAlign: "start" }}
-    >
+    <Section id="artwork">
       <SectionContent>
-        <SectionHeader>Craft & Motion</SectionHeader>
+        <Header>Craft & Motion</Header>
         <MasonryGrid>
           {artworks.map((item) => (
             <Card key={item.id}>
-              <ImageSlot $height={item.height} />
+              <ImageWrapper $height={item.height}>
+                <CardImage
+                  src={item.src}
+                  alt={item.title}
+                  $rotate={item.rotate}
+                />
+              </ImageWrapper>
               <CardBody>
                 <CardTitle>{item.title}</CardTitle>
-                <Tags>
-                  {item.tags.map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </Tags>
+                <Tags>{item.tags.join(" | ")}</Tags>
               </CardBody>
             </Card>
           ))}
         </MasonryGrid>
       </SectionContent>
-    </PageGridSection>
+    </Section>
   );
 }
