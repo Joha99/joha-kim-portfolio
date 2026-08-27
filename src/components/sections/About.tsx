@@ -33,7 +33,7 @@ const Intro = styled.h3(({ theme }) => ({
 
 const PhotoWrapper = styled.div(({ theme }) => ({
   alignSelf: "center",
-  borderRadius: theme.radii["2xl"],
+  borderRadius: theme.radii["lg"],
   overflow: "hidden",
 }));
 
@@ -49,6 +49,7 @@ const Bio = styled.p(({ theme }) => ({
   fontFamily: theme.fonts.display,
   fontSize: theme.fontSizes.xl,
   fontWeight: theme.fontWeights.medium,
+  width: "80%",
 }));
 
 export function About() {
@@ -64,11 +65,12 @@ export function About() {
           <Photo src="/images/profile-photo.jpg" alt="Joha Kim" />
         </PhotoWrapper>
         <Bio>
-          I care about component architecture just as much as visual polish, and
-          I believe the best interfaces come from sweating the details down to
-          the pixel. My process is driven by experimentation: start with a
-          concept, build the framework, and iterate until every interaction
-          feels intentional.
+          I'm Joha, a software engineer from Seoul based in DC. I studied
+          computer science at Georgia Tech and spent four years at HubSpot
+          owning Trellis, the design system behind their enterprise products. I
+          obsess over component architecture and visual craft equally, and I
+          believe the best interfaces come from sweating every detail down to
+          the pixel.
         </Bio>
       </Content>
     </PageGridSection>

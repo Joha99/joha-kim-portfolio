@@ -51,15 +51,6 @@ const CardDescription = styled.p(({ theme }) => ({
   marginBottom: theme.spacing["24"],
 }));
 
-const CardLink = styled.span(({ theme }) => ({
-  alignItems: "center",
-  color: theme.colors.font.inverse,
-  display: "inline-flex",
-  fontSize: theme.fontSizes.sm,
-  fontWeight: theme.fontWeights.medium,
-  gap: theme.spacing["4"],
-}));
-
 const projects = [
   {
     title: "Design Systems",
@@ -85,9 +76,6 @@ export function Projects() {
               <CardBody>
                 <CardTitle>{project.title}</CardTitle>
                 <CardDescription>{project.description}</CardDescription>
-                <CardLink>
-                  View project <ArrowTopRightIcon />
-                </CardLink>
               </CardBody>
             </Card>
           ))}
