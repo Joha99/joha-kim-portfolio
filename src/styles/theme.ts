@@ -11,7 +11,7 @@ export const theme = {
       secondary: "#4A4A45",
       muted: "#8A8A82",
       inverse: "#FAFAF7",
-      inverseMuted: "#A8A8A0",
+      inverseMuted: "#C8C8C0",
     },
     accent: {
       ember: "#E8572A",

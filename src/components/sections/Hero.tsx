@@ -7,16 +7,31 @@ const Section = styled(PageGridSection)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   padding: theme.spacing["20"],
+  position: "relative",
+}));
+
+const BackgroundImage = styled.img(() => ({
+  height: "100%",
+  inset: 0,
+  mixBlendMode: "screen",
+  objectFit: "cover",
+  opacity: 0.5,
+  pointerEvents: "none",
+  position: "absolute",
+  width: "100%",
+  zIndex: 0,
 }));
 
 const Top = styled.div(({ theme }) => ({
   color: theme.colors.font.inverseMuted,
   display: "flex",
-  fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes.xl,
+  fontFamily: theme.fonts.pixel,
+  fontSize: theme.fontSizes.lg,
   fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / -1",
   justifyContent: "space-between",
+  position: "relative",
+  zIndex: 1,
 }));
 
 const Title = styled.h3(() => ({
@@ -32,18 +47,22 @@ const Location = styled.h3(() => ({
 
 const HeroText = styled.h2(({ theme }) => ({
   color: theme.colors.font.inverseMuted,
-  fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes["3xl"],
+  fontFamily: theme.fonts.pixel,
+  fontSize: theme.fontSizes["4xl"],
   fontWeight: theme.fontWeights.semibold,
   gridColumn: "1 / -1",
   marginBottom: theme.spacing["20"],
   marginTop: "auto",
+  position: "relative",
   textTransform: "uppercase",
+  zIndex: 1,
 }));
 
 const NameWrapper = styled.div(({ theme }) => ({
   backgroundColor: theme.colors.accent.volt,
   borderRadius: theme.radii.sm,
+  position: "relative",
+  zIndex: 1,
 }));
 
 const NameSvg = styled.svg(() => ({
@@ -84,6 +103,7 @@ export function Hero() {
 
   return (
     <Section>
+      <BackgroundImage src="/images/hero-background.png" alt="" />
       <Top>
         <Title>
           <span>SOFTWARE ENGINEER</span>
@@ -95,7 +115,7 @@ export function Hero() {
         </Location>
       </Top>
       <HeroText>
-        Crafting and engineering
+        Crafting & engineering
         <br />
         pixel-perfect UI and delightful interactions
       </HeroText>

@@ -1,4 +1,3 @@
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import styled from "styled-components";
 
 import {

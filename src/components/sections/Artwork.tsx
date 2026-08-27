@@ -95,7 +95,7 @@ const ImageWrapper = styled.div<{ $height: string }>(({ theme, $height }) => ({
 
 const CardImage = styled.img<{ $rotate?: string }>(({ $rotate }) => ({
   display: "block",
-  filter: "saturate(1.2) contrast(1.1)",
+  filter: "contrast(1.1)",
   height: "100%",
   objectFit: "cover",
   transform: $rotate ? `rotate(${$rotate}) scale(1.08)` : undefined,
@@ -116,9 +116,9 @@ const CardTitle = styled.h3(({ theme }) => ({
 }));
 
 const Tags = styled.div(({ theme }) => ({
+  color: theme.colors.font.inverseMuted,
   display: "flex",
   flexWrap: "wrap",
-  color: theme.colors.font.inverseMuted,
   fontFamily: theme.fonts.mono,
   fontSize: theme.fontSizes.sm,
   fontWeight: theme.fontWeights.bold,
