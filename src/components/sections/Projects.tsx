@@ -4,60 +4,105 @@ import {
   PageGridSection,
   SectionContent,
 } from "@/components/layout/PageGridLayout";
-import { SectionHeader } from "@/components/SectionHeader";
 
-const Section = styled(PageGridSection)(() => ({
-  placeContent: "center",
+interface Project {
+  description: string;
+  image?: string;
+  images?: string[];
+  title: string;
+}
+
+const Section = styled(PageGridSection)(({ theme }) => ({
+  paddingTop: theme.spacing["80"],
+  position: "relative",
 }));
 
-const CardGrid = styled.div(({ theme }) => ({
+const Content = styled(SectionContent)(() => ({
   display: "grid",
-  gap: theme.spacing["24"],
-  gridTemplateColumns: "repeat(3, 1fr)",
-  marginTop: theme.spacing["40"],
+  gridTemplateColumns: "1fr 1fr",
+  justifyContent: "start",
 }));
 
-const Card = styled.div(({ theme }) => ({
-  backgroundColor: theme.colors.border.inverse,
-  borderRadius: theme.radii.xl,
-  display: "flex",
-  flexDirection: "column",
-  overflow: "hidden",
+const Title = styled.h2(({ theme }) => ({
+  color: theme.colors.accent.volt,
+  fontFamily: theme.fonts.hero,
+  fontSize: theme.fontSizes["8xl"],
+  fontWeight: theme.fontWeights.medium,
+  lineHeight: 0.95,
+  textTransform: "uppercase",
+  whiteSpace: "pre-line",
 }));
 
-const ImageSlot = styled.div(({ theme }) => ({
-  backgroundColor: theme.colors.border.subtle,
-  height: "240px",
-}));
-
-const CardBody = styled.div(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  padding: theme.spacing["24"],
-}));
-
-const CardTitle = styled.h3(({ theme }) => ({
-  fontSize: theme.fontSizes.xl,
-  fontWeight: theme.fontWeights.semibold,
-  marginBottom: theme.spacing["12"],
-}));
-
-const CardDescription = styled.p(({ theme }) => ({
+const Description = styled.p(({ theme }) => ({
   color: theme.colors.font.inverseMuted,
-  flex: 1,
-  fontSize: theme.fontSizes.sm,
+  fontFamily: theme.fonts.mono,
+  fontSize: theme.fontSizes.lg,
+  fontWeight: theme.fontWeights.semibold,
   lineHeight: 1.6,
-  marginBottom: theme.spacing["24"],
+  maxWidth: "500px",
+  textTransform: "uppercase",
 }));
 
-const projects = [
+const TextColumn = styled.div(({ theme }) => ({
+  alignItems: "start",
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing["20"],
+  gridColumn: "1 / 2",
+}));
+
+const ImageWrapper = styled.div(() => ({
+  bottom: "100px",
+  position: "absolute",
+  right: "120px",
+}));
+
+const ProjectImage = styled.img(({ theme }) => ({
+  borderRadius: theme.radii.sm,
+  display: "block",
+  maxHeight: "750px",
+  objectFit: "cover",
+  transform: "rotate(5deg)",
+  width: "750px",
+}));
+
+const ImageStack = styled.div(({ theme }) => ({
+  alignItems: "center",
+  backgroundColor: "#FFFFFF",
+  borderRadius: theme.radii.sm,
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing["16"],
+  maxHeight: "800px",
+  overflow: "hidden",
+  padding: theme.spacing["32"],
+  transform: "rotate(5deg)",
+  width: "900px",
+}));
+
+const StackImage = styled.img(() => ({
+  display: "block",
+  maxWidth: "100%",
+}));
+
+const projects: Project[] = [
   {
-    title: "Design Systems",
+    title: "Design\nSystems",
+    images: [
+      "/images/project-ds-5.png",
+      "/images/project-ds-6.png",
+      "/images/project-ds-1.png",
+      "/images/project-ds-2.png",
+      "/images/project-ds-4.png",
+      "/images/project-ds-7.png",
+      "/images/project-ds-3.png",
+    ],
     description:
       "Owned Trellis, the design system powering HubSpot's enterprise products. Architected compound component patterns with StyleX and BaseUI, built the typography system with WCAG 2.1 AA compliance, and led large-scale migration off legacy components.",
   },
   {
-    title: "Dashboards & Reporting",
+    title: "Dashboards\n& Reporting",
+    image: "/images/project-reporting.png",
     description:
       "Led the Single Report Viewer frontend redesign, shipped in a single sprint. Built custom SVG loading skeletons and created a shared reporting library adopted across the org.",
   },
@@ -65,21 +110,31 @@ const projects = [
 
 export function Projects() {
   return (
-    <Section id="projects">
-      <SectionContent>
-        <SectionHeader>Featured Projects</SectionHeader>
-        <CardGrid>
-          {projects.map((project) => (
-            <Card key={project.title}>
-              <ImageSlot />
-              <CardBody>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
-              </CardBody>
-            </Card>
-          ))}
-        </CardGrid>
-      </SectionContent>
-    </Section>
+    <>
+      {projects.map((project) => (
+        <Section key={project.title} id="projects">
+          <Content>
+            <TextColumn>
+              <Title>{project.title}</Title>
+              <Description>{project.description}</Description>
+            </TextColumn>
+
+            <ImageWrapper>
+              {project.images ? (
+                <ImageStack>
+                  {project.images.map((src) => (
+                    <StackImage key={src} src={src} alt={project.title} />
+                  ))}
+                </ImageStack>
+              ) : (
+                project.image && (
+                  <ProjectImage src={project.image} alt={project.title} />
+                )
+              )}
+            </ImageWrapper>
+          </Content>
+        </Section>
+      ))}
+    </>
   );
 }

@@ -63,10 +63,25 @@ const artworks = [
     height: "650px",
     tags: ["Oil", "Figurative"],
   },
+  {
+    id: 9,
+    title: "The Wave",
+    src: "/images/artwork/painting-4.png",
+    height: "580px",
+    tags: ["Oil", "Seascape"],
+  },
+  {
+    id: 10,
+    title: "The Capitol",
+    src: "/images/artwork/painting-5.png",
+    height: "600px",
+    tags: ["Oil", "Cityscape"],
+  },
 ];
 
 const Section = styled(PageGridSection)(() => ({
   minHeight: "auto",
+  paddingBlock: "0",
   scrollSnapAlign: "start",
 }));
 
@@ -75,7 +90,6 @@ const Header = styled.h2(({ theme }) => ({
   fontFamily: theme.fonts.display,
   fontSize: theme.fontSizes["5xl"],
   fontWeight: theme.fontWeights.bold,
-  marginBottom: theme.spacing["40"],
 }));
 
 const MasonryGrid = styled.div(({ theme }) => ({
@@ -129,7 +143,7 @@ export function Artwork() {
   return (
     <Section id="artwork">
       <SectionContent>
-        <Header>Craft & Motion</Header>
+        <Header>Selected Works</Header>
         <MasonryGrid>
           {artworks.map((item) => (
             <Card key={item.id}>
