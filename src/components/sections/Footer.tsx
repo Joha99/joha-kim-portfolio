@@ -1,3 +1,4 @@
+import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import styled from "styled-components";
 
 import {
@@ -18,6 +19,12 @@ const Content = styled(SectionContent)(() => ({
   height: "600px",
 }));
 
+const CTAWrapper = styled.div(({ theme }) => ({
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing["32"],
+}));
+
 const CTA = styled.h2(({ theme }) => ({
   fontFamily: theme.fonts.display,
   fontSize: "120px",
@@ -26,13 +33,29 @@ const CTA = styled.h2(({ theme }) => ({
   lineHeight: 1,
 }));
 
+const ContactButton = styled.a(({ theme }) => ({
+  alignItems: "center",
+  border: `1.5px solid ${theme.colors.accent.ember}`,
+  borderRadius: theme.radii.full,
+  color: theme.colors.accent.ember,
+  display: "flex",
+  fontFamily: theme.fonts.mono,
+  fontWeight: theme.fontWeights.bold,
+  fontSize: theme.fontSizes["xl"],
+  gap: theme.spacing["8"],
+  paddingBlock: theme.spacing["8"],
+  paddingInline: theme.spacing["16"],
+  width: "fit-content",
+}));
+
 const List = styled.ul(({ theme }) => ({
-  alignSelf: "center",
+  alignSelf: "start",
   display: "flex",
   gap: theme.spacing["8"],
   gridColumn: "3 / -1",
   justifyContent: "space-between",
   listStyleType: "none",
+  paddingTop: theme.spacing["32"],
 }));
 
 const ListItem = styled.li(({ theme }) => ({
@@ -59,7 +82,13 @@ export function Footer() {
   return (
     <StyledFooter id="contact">
       <Content>
-        <CTA>Let's build something together.</CTA>
+        <CTAWrapper>
+          <CTA>Let's build something together.</CTA>
+          <ContactButton href="mailto:johakim9936@gmail.com">
+            Contact me <ArrowTopRightIcon width={24} height={24} />
+          </ContactButton>
+        </CTAWrapper>
+
         <List>
           <ListItem>
             <Category>Contact</Category>

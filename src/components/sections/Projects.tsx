@@ -14,23 +14,36 @@ interface Project {
 
 const Section = styled(PageGridSection)(({ theme }) => ({
   paddingTop: theme.spacing["80"],
-  position: "relative",
 }));
 
-const Content = styled(SectionContent)(() => ({
+const Content = styled(SectionContent)(({ theme }) => ({
+  columnGap: theme.spacing["48"],
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
-  justifyContent: "start",
+  paddingBlock: theme.spacing["64"],
 }));
 
 const Title = styled.h2(({ theme }) => ({
+  alignSelf: "start",
   color: theme.colors.accent.volt,
   fontFamily: theme.fonts.hero,
-  fontSize: theme.fontSizes["8xl"],
+  fontSize: theme.fontSizes["7xl"],
   fontWeight: theme.fontWeights.medium,
   lineHeight: 0.95,
+  position: "relative",
+  textAlign: "right",
   textTransform: "uppercase",
   whiteSpace: "pre-line",
+}));
+
+const Arrow = styled.img(() => ({
+  height: "300px",
+  left: "55%",
+  mixBlendMode: "screen",
+  pointerEvents: "none",
+  position: "absolute",
+  top: "110%",
+  width: "300px",
 }));
 
 const Description = styled.p(({ theme }) => ({
@@ -43,27 +56,18 @@ const Description = styled.p(({ theme }) => ({
   textTransform: "uppercase",
 }));
 
-const TextColumn = styled.div(({ theme }) => ({
-  alignItems: "start",
+const RightColumn = styled.div(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
-  gap: theme.spacing["20"],
-  gridColumn: "1 / 2",
-}));
-
-const ImageWrapper = styled.div(() => ({
-  bottom: "100px",
-  position: "absolute",
-  right: "120px",
+  gap: theme.spacing["24"],
 }));
 
 const ProjectImage = styled.img(({ theme }) => ({
   borderRadius: theme.radii.sm,
   display: "block",
-  maxHeight: "750px",
+  maxHeight: "550px",
+  maxWidth: "70%",
   objectFit: "cover",
-  transform: "rotate(5deg)",
-  width: "750px",
 }));
 
 const ImageStack = styled.div(({ theme }) => ({
@@ -73,11 +77,10 @@ const ImageStack = styled.div(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing["16"],
-  maxHeight: "800px",
+  maxHeight: "550px",
+  maxWidth: "70%",
   overflow: "hidden",
   padding: theme.spacing["32"],
-  transform: "rotate(5deg)",
-  width: "900px",
 }));
 
 const StackImage = styled.img(() => ({
@@ -111,15 +114,14 @@ const projects: Project[] = [
 export function Projects() {
   return (
     <>
-      {projects.map((project) => (
-        <Section key={project.title} id="projects">
-          <Content>
-            <TextColumn>
-              <Title>{project.title}</Title>
-              <Description>{project.description}</Description>
-            </TextColumn>
-
-            <ImageWrapper>
+      <Section id="projects">
+        {projects.map((project) => (
+          <Content key={project.title}>
+            <Title>
+              {project.title}
+              <Arrow src="/images/projects-arrow.png" alt="" />
+            </Title>
+            <RightColumn>
               {project.images ? (
                 <ImageStack>
                   {project.images.map((src) => (
@@ -131,10 +133,11 @@ export function Projects() {
                   <ProjectImage src={project.image} alt={project.title} />
                 )
               )}
-            </ImageWrapper>
+              <Description>{project.description}</Description>
+            </RightColumn>
           </Content>
-        </Section>
-      ))}
+        ))}
+      </Section>
     </>
   );
 }
