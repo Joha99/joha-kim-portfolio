@@ -79,7 +79,7 @@ const artworks = [
   },
 ];
 
-const Section = styled(PageGridSection)(({ theme }) => ({
+const Section = styled(PageGridSection)(() => ({
   minHeight: "auto",
   paddingBlockStart: "84px",
   scrollSnapAlign: "start",
