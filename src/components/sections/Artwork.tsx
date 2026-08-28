@@ -79,17 +79,22 @@ const artworks = [
   },
 ];
 
-const Section = styled(PageGridSection)(() => ({
+const Section = styled(PageGridSection)(({ theme }) => ({
   minHeight: "auto",
-  paddingBlock: "0",
+  paddingBlockStart: "84px",
   scrollSnapAlign: "start",
 }));
 
 const Header = styled.h2(({ theme }) => ({
-  color: theme.colors.font.inverse,
-  fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes["5xl"],
+  color: theme.colors.accent.ember,
+  fontFamily: theme.fonts.hero,
+  fontSize: theme.fontSizes["7xl"],
   fontWeight: theme.fontWeights.bold,
+  borderBlock: `8px solid ${theme.colors.accent.ember}`,
+  marginBottom: theme.spacing["24"],
+  textTransform: "uppercase",
+  lineHeight: "1",
+  paddingBlock: "10px",
 }));
 
 const MasonryGrid = styled.div(({ theme }) => ({

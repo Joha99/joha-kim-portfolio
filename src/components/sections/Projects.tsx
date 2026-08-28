@@ -9,6 +9,7 @@ interface Project {
   description: string;
   image?: string;
   images?: string[];
+  reversed?: boolean;
   title: string;
 }
 
@@ -23,7 +24,7 @@ const Content = styled(SectionContent)(({ theme }) => ({
   paddingBlock: theme.spacing["64"],
 }));
 
-const Title = styled.h2(({ theme }) => ({
+const Title = styled.h2<{ $reversed?: boolean }>(({ theme, $reversed }) => ({
   alignSelf: "start",
   color: theme.colors.accent.volt,
   fontFamily: theme.fonts.hero,
@@ -31,36 +32,44 @@ const Title = styled.h2(({ theme }) => ({
   fontWeight: theme.fontWeights.medium,
   lineHeight: 0.95,
   position: "relative",
-  textAlign: "right",
+  textAlign: $reversed ? "left" : "right",
   textTransform: "uppercase",
   whiteSpace: "pre-line",
 }));
 
-const Arrow = styled.img(() => ({
+const Arrow = styled.img<{ $reversed?: boolean }>(({ $reversed }) => ({
   height: "300px",
-  left: "55%",
+  left: $reversed ? undefined : "55%",
   mixBlendMode: "screen",
   pointerEvents: "none",
   position: "absolute",
+  right: $reversed ? "55%" : undefined,
   top: "110%",
+  transform: $reversed ? "scaleX(-1)" : undefined,
   width: "300px",
 }));
 
-const Description = styled.p(({ theme }) => ({
-  color: theme.colors.font.inverseMuted,
-  fontFamily: theme.fonts.mono,
-  fontSize: theme.fontSizes.lg,
-  fontWeight: theme.fontWeights.semibold,
-  lineHeight: 1.6,
-  maxWidth: "500px",
-  textTransform: "uppercase",
-}));
+const Description = styled.p<{ $reversed?: boolean }>(
+  ({ theme, $reversed }) => ({
+    color: theme.colors.font.inverseMuted,
+    fontFamily: theme.fonts.mono,
+    fontSize: theme.fontSizes.lg,
+    fontWeight: theme.fontWeights.semibold,
+    lineHeight: 1.6,
+    maxWidth: "500px",
+    textAlign: $reversed ? "right" : undefined,
+    textTransform: "uppercase",
+  })
+);
 
-const RightColumn = styled.div(({ theme }) => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: theme.spacing["24"],
-}));
+const ContentColumn = styled.div<{ $alignEnd?: boolean }>(
+  ({ theme, $alignEnd }) => ({
+    alignItems: $alignEnd ? "flex-end" : undefined,
+    display: "flex",
+    flexDirection: "column",
+    gap: theme.spacing["24"],
+  })
+);
 
 const ProjectImage = styled.img(({ theme }) => ({
   borderRadius: theme.radii.sm,
@@ -106,6 +115,7 @@ const projects: Project[] = [
   {
     title: "Dashboards\n& Reporting",
     image: "/images/project-reporting.png",
+    reversed: true,
     description:
       "Led the Single Report Viewer frontend redesign, shipped in a single sprint. Built custom SVG loading skeletons and created a shared reporting library adopted across the org.",
   },
@@ -115,13 +125,20 @@ export function Projects() {
   return (
     <>
       <Section id="projects">
-        {projects.map((project) => (
-          <Content key={project.title}>
-            <Title>
+        {projects.map((project) => {
+          const titleBlock = (
+            <Title $reversed={project.reversed}>
               {project.title}
-              <Arrow src="/images/projects-arrow.png" alt="" />
+              <Arrow
+                src="/images/projects-arrow.png"
+                alt=""
+                $reversed={project.reversed}
+              />
             </Title>
-            <RightColumn>
+          );
+
+          const contentBlock = (
+            <ContentColumn $alignEnd={project.reversed}>
               {project.images ? (
                 <ImageStack>
                   {project.images.map((src) => (
@@ -133,10 +150,28 @@ export function Projects() {
                   <ProjectImage src={project.image} alt={project.title} />
                 )
               )}
-              <Description>{project.description}</Description>
-            </RightColumn>
-          </Content>
-        ))}
+              <Description $reversed={project.reversed}>
+                {project.description}
+              </Description>
+            </ContentColumn>
+          );
+
+          return (
+            <Content key={project.title}>
+              {project.reversed ? (
+                <>
+                  {contentBlock}
+                  {titleBlock}
+                </>
+              ) : (
+                <>
+                  {titleBlock}
+                  {contentBlock}
+                </>
+              )}
+            </Content>
+          );
+        })}
       </Section>
     </>
   );

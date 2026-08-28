@@ -19,7 +19,7 @@ const Intro = styled.h3(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   fontFamily: theme.fonts.display,
-  fontSize: theme.fontSizes["4xl"],
+  fontSize: theme.fontSizes["5xl"],
   fontWeight: theme.fontWeights.bold,
   gap: theme.spacing["8"],
   textTransform: "uppercase",
@@ -58,8 +58,9 @@ export function About() {
       <Content>
         <Intro>
           <span>Engineer</span>
-          <span>at the intersection of</span>
-          <span>design and code</span>
+          <span>at the</span>
+          <span>intersection</span>
+          <span>of design and code</span>
         </Intro>
         <PhotoWrapper>
           <Photo src="/images/profile-photo.jpg" alt="Joha Kim" />
